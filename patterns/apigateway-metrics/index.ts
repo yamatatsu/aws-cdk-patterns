@@ -20,10 +20,21 @@ class ApigatewayMetrics extends cdk.Stack {
       handler,
       options: {
         restApiName: "ApigatewayMetrics_RestApi",
+        deploy: true,
+        deployOptions: {
+          stageName: "stg",
+          tracingEnabled: false,
+          variables: {
+            stageVariable: "It is value for testing stage variable.",
+          },
+          metricsEnabled: true,
+          loggingLevel: apigateway.MethodLoggingLevel.INFO,
+          dataTraceEnabled: true,
+        },
       },
     })
 
-    new cloudwatch.Alarm(this, "RestApiHealthAlerm", {
+    new cloudwatch.Alarm(this, "RestApi5XXErrorAlerm", {
       metric: new cloudwatch.Metric({
         namespace: "AWS/ApiGateway",
         metricName: "5XXError",
@@ -35,7 +46,7 @@ class ApigatewayMetrics extends cdk.Stack {
       period: cdk.Duration.minutes(5),
       evaluationPeriods: 3,
       statistic: "Sum",
-      alarmName: "ApigatewayMetrics_RestApiHealthAlerm",
+      alarmName: "ApigatewayMetrics_RestApi5XXErrorAlerm",
       comparisonOperator:
         cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
       threshold: 10,
