@@ -30,6 +30,12 @@ class ApigatewayMetrics extends cdk.Stack {
           metricsEnabled: true,
           loggingLevel: apigateway.MethodLoggingLevel.INFO,
           dataTraceEnabled: true,
+          /**
+           * If you want to use Custom Access Logging (sourceIp etc.), you should set on aws web console.
+           * Api Gateway > Stages > Log/Tracing > Custom Access Logging
+           *
+           * X-Ray Tracing too.
+           */
         },
       },
     })
