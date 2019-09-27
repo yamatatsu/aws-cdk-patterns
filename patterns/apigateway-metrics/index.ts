@@ -2,6 +2,7 @@ import cdk = require("@aws-cdk/core")
 import { Duration } from "@aws-cdk/core"
 import lambda = require("@aws-cdk/aws-lambda")
 import apigateway = require("@aws-cdk/aws-apigateway")
+import cloudwatch = require("@aws-cdk/aws-cloudwatch")
 
 class ApigatewayMetrics extends cdk.Stack {
   constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
@@ -15,11 +16,29 @@ class ApigatewayMetrics extends cdk.Stack {
       timeout: Duration.seconds(10),
     })
 
-    new apigateway.LambdaRestApi(this, "RestApi", {
+    const restApi = new apigateway.LambdaRestApi(this, "RestApi", {
       handler,
       options: {
         restApiName: "ApigatewayMetrics_RestApi",
       },
+    })
+
+    new cloudwatch.Alarm(this, "RestApiHealthAlerm", {
+      metric: new cloudwatch.Metric({
+        namespace: "AWS/ApiGateway",
+        metricName: "5XXError",
+        dimensions: {
+          ApiName: restApi.restApiId,
+          Stage: "prod",
+        },
+      }),
+      period: cdk.Duration.minutes(5),
+      evaluationPeriods: 3,
+      statistic: "Sum",
+      alarmName: "ApigatewayMetrics_RestApiHealthAlerm",
+      comparisonOperator:
+        cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
+      threshold: 10,
     })
   }
 }
