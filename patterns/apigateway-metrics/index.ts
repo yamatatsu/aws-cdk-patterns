@@ -16,10 +16,11 @@ class ApigatewayMetrics extends cdk.Stack {
       timeout: Duration.seconds(10),
     })
 
+    const restApiName = "ApigatewayMetrics_RestApi"
     const restApi = new apigateway.LambdaRestApi(this, "RestApi", {
       handler,
       options: {
-        restApiName: "ApigatewayMetrics_RestApi",
+        restApiName,
         deploy: true,
         deployOptions: {
           stageName: "stg",
@@ -41,21 +42,21 @@ class ApigatewayMetrics extends cdk.Stack {
     })
 
     new cloudwatch.Alarm(this, "RestApi5XXErrorAlerm", {
+      alarmName: "ApigatewayMetrics_RestApi5XXErrorAlerm",
       metric: new cloudwatch.Metric({
         namespace: "AWS/ApiGateway",
         metricName: "5XXError",
         dimensions: {
-          ApiName: restApi.restApiId,
-          Stage: "prod",
+          ApiName: restApiName,
+          Stage: restApi.deploymentStage.stageName,
         },
       }),
       period: cdk.Duration.minutes(5),
-      evaluationPeriods: 3,
+      evaluationPeriods: 1,
       statistic: "Sum",
-      alarmName: "ApigatewayMetrics_RestApi5XXErrorAlerm",
       comparisonOperator:
         cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
-      threshold: 10,
+      threshold: 1,
     })
   }
 }
