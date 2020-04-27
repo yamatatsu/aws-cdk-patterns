@@ -6,7 +6,8 @@
   "scripts": {
     "build": "docker build . -t client-certificate-test:latest",
     "start": "docker run --rm -p 8080:3000 -p 8443:443 --env-file .env -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_SESSION_TOKEN -e SECRET_ID -e SERVER_CERTIFICATE_ARN --name client-certificate-test client-certificate-test:latest",
-    "stop": "docker kill client-certificate-test"
+    "stop": "docker kill client-certificate-test",
+    "push": "docker tag client-certificate-test:latest yamatatsu193/client-certificate-test:latest && docker push yamatatsu193/client-certificate-test:latest"
   },
   "dependencies": {
     "aws-sdk": "^2.660.0",
