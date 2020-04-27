@@ -67,6 +67,10 @@ const secretPromise = secretsManager
   })
 
 // non ssl server
-http.createServer(app).listen(3000, () => {
-  console.log(`Server is listening http!!`)
-})
+http
+  .createServer((req, res) => {
+    res.end("Hello, world.")
+  })
+  .listen(80, () => {
+    console.log(`Server is listening http!!`)
+  })
