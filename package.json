@@ -20,6 +20,7 @@
     "@aws-cdk/aws-certificatemanager": "^1.32.2",
     "@aws-cdk/aws-cloudformation": "^1.32.2",
     "@aws-cdk/aws-cloudwatch": "^1.32.2",
+    "@aws-cdk/aws-cloudwatch-actions": "^1.36.1",
     "@aws-cdk/aws-codebuild": "^1.32.2",
     "@aws-cdk/aws-codecommit": "^1.32.2",
     "@aws-cdk/aws-codepipeline": "^1.32.2",
