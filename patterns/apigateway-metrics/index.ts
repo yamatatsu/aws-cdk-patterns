@@ -11,6 +11,7 @@ class ApigatewayMetrics extends cdk.Stack {
       code: new lambda.AssetCode("./lambda"),
       handler: "index.handler",
       runtime: lambda.Runtime.NODEJS_10_X,
+      tracing: lambda.Tracing.ACTIVE,
     })
 
     const restApiName = "ApigatewayMetrics_RestApi"
@@ -21,19 +22,13 @@ class ApigatewayMetrics extends cdk.Stack {
         deploy: true,
         deployOptions: {
           stageName: "stg",
-          tracingEnabled: false,
           variables: {
             stageVariable: "It is value for testing stage variable.",
           },
           metricsEnabled: true,
           loggingLevel: apigateway.MethodLoggingLevel.INFO,
           dataTraceEnabled: true,
-          /**
-           * If you want to use Custom Access Logging (sourceIp etc.), you should set on aws web console.
-           * Api Gateway > Stages > Log/Tracing > Custom Access Logging
-           *
-           * X-Ray Tracing too.
-           */
+          tracingEnabled: true,
         },
       },
     })
