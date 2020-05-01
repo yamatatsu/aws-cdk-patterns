@@ -1,0 +1,22 @@
+{
+  "availability-zones:account=407172421073:region=ap-northeast-1": [
+    "ap-northeast-1a",
+    "ap-northeast-1c",
+    "ap-northeast-1d"
+  ],
+  "ami:account=407172421073:filters.image-type.0=machine:filters.name.0=amzn-ami-vpc-nat-*:filters.state.0=available:owners.0=amazon:region=ap-northeast-1": "ami-0b7aafcb5282e0179",
+  "hosted-zone:account=421891968721:domainName=cureapp.net:region=ap-northeast-1": {
+    "Id": "/hostedzone/Z2D4EJDIDCT12J",
+    "Name": "cureapp.net."
+  },
+  "availability-zones:account=969371781552:region=ap-northeast-1": [
+    "ap-northeast-1a",
+    "ap-northeast-1c",
+    "ap-northeast-1d"
+  ],
+  "ami:account=969371781552:filters.image-type.0=machine:filters.name.0=amzn-ami-vpc-nat-*:filters.state.0=available:owners.0=amazon:region=ap-northeast-1": "ami-0b7aafcb5282e0179",
+  "hosted-zone:account=969371781552:domainName=aps.development.cureapp.net:region=ap-northeast-1": {
+    "Id": "/hostedzone/ZH6MQ4DQZPQ8A",
+    "Name": "aps.development.cureapp.net."
+  }
+}
