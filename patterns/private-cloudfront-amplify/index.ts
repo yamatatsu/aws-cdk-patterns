@@ -19,7 +19,7 @@ class PrivateCloudfrontAmplify extends cdk.Stack {
         requireSymbols: false,
       },
     })
-    const userPoolClient = new cognito.UserPoolClient(this, "UserPoolClient", {
+    new cognito.UserPoolClient(this, "UserPoolClient", {
       userPool,
       authFlows: { userPassword: true, refreshToken: true },
     })
@@ -61,11 +61,10 @@ class PrivateCloudfrontAmplify extends cdk.Stack {
     )
     bucket.grantRead(originAccessIdentity)
 
-    const distribution = new cloudfront.CloudFrontWebDistribution(
+    new cloudfront.CloudFrontWebDistribution(
       this,
       "CloudFrontWebDistribution",
       {
-        // defaultRootObject: "/index.html",
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         httpVersion: cloudfront.HttpVersion.HTTP2,
         originConfigs: [
@@ -128,20 +127,6 @@ class PrivateCloudfrontAmplify extends cdk.Stack {
             ],
           },
         ],
-        // errorConfigurations: [
-        //   {
-        //     errorCode: 403,
-        //     errorCachingMinTtl: 300,
-        //     responseCode: 200,
-        //     responsePagePath: "/index.html",
-        //   },
-        //   {
-        //     errorCode: 404,
-        //     errorCachingMinTtl: 300,
-        //     responseCode: 200,
-        //     responsePagePath: "/index.html",
-        //   },
-        // ],
       },
     )
   }
@@ -150,5 +135,6 @@ class PrivateCloudfrontAmplify extends cdk.Stack {
 const app = new cdk.App()
 new PrivateCloudfrontAmplify(app, "PrivateCloudfrontAmplify", {
   stackName: "PrivateCloudfrontAmplify",
+  // lambda@edge に使う lambda は us-east-1 である必要があるので、簡単のために全部バージニア北部で作っちゃう。
   env: { region: "us-east-1" },
 })
