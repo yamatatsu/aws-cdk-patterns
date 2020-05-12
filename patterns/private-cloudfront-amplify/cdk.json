@@ -1,0 +1,1 @@
+{ "app": "yarn upbin dotenv yarn upbin ts-node index.ts" }
