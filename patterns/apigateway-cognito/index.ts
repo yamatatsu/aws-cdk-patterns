@@ -1,5 +1,4 @@
 import cdk = require("@aws-cdk/core")
-import { Duration } from "@aws-cdk/core"
 import lambda = require("@aws-cdk/aws-lambda")
 import apigateway = require("@aws-cdk/aws-apigateway")
 import cognito = require("@aws-cdk/aws-cognito")
@@ -8,80 +7,72 @@ class ApigatewayCognito extends cdk.Stack {
   constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
     super(parent, id, props)
 
-    const userPool = new cognito.UserPool(this, "UserPool", {})
+    const userPool = new cognito.UserPool(this, "UserPool", {
+      selfSignUpEnabled: true,
+      /**
+       * emailのみにすると SignUp API にて UsernameExistsException によるユーザー存在確認ができてしまう。
+       * `username: true` を追加することで メール疎通以前においてメアド重複エラーが発生しなくなるため、ユーザー存在確認ができなくなる。
+       * ただし username の入力が必須になる。変更はできないので変更機能の実装は不要。
+       * 変更もしたい場合は preferred_username を使う。
+       *
+       * SignUp API の呼び出しサンプル
+       *
+       * curl https://cognito-idp.ap-northeast-1.amazonaws.com/ \
+       *   -H 'Content-Type: application/x-amz-json-1.1' \
+       *   -H 'x-amz-target: AWSCognitoIdentityProviderService.SignUp' \
+       *   -d '{"ClientId":"xxxxxxxxxxxxxxxxx","Username":"hogehoge","UserAttributes": [{"Name":"email","Value":"xxxxxxxxxx@gmail.com"}],"Password": "xxxxxxxxxx","ValidationData":null}'
+       *
+       * curl https://cognito-idp.ap-northeast-1.amazonaws.com/ \
+       *   -H 'Content-Type: application/x-amz-json-1.1' \
+       *   -H 'x-amz-target: AWSCognitoIdentityProviderService.ConfirmSignUp' \
+       *   -d '{"ClientId":"xxxxxxxxxxxxxxxxx","Username":"hogehoge","ConfirmationCode":"xxxxxx"}'
+       */
+      signInAliases: { username: true, email: true },
+      userVerification: {
+        emailStyle: cognito.VerificationEmailStyle.CODE,
+      },
+    })
+    const userPoolClient = new cognito.UserPoolClient(this, "UserPoolClient", {
+      userPool,
+      authFlows: { userSrp: true, refreshToken: true },
+    })
+
+    new cognito.UserPoolDomain(this, "UserPoolDomain", {
+      userPool,
+      cognitoDomain: { domainPrefix: `yamatatsu-apigateway-example` },
+    })
 
     const handler = new lambda.Function(this, "Lambda", {
       code: new lambda.AssetCode("./lambda"),
       handler: "index.handler",
-      runtime: lambda.Runtime.NODEJS_10_X,
-      environment: {},
-      timeout: Duration.seconds(10),
+      runtime: lambda.Runtime.NODEJS_12_X,
     })
 
-    const restApi = new apigateway.LambdaRestApi(this, "RestApi", {
-      handler,
-      options: {
-        restApiName: "ApigatewayCognito_RestApi",
-        deploy: true,
+    const restApi = new apigateway.RestApi(this, "RestApi", {
+      restApiName: "ApigatewayCognito_RestApi",
+      deploy: true,
+    })
+
+    const cognitoAuthrizer = new apigateway.CfnAuthorizer(
+      this,
+      "CfnAuthorizer",
+      {
+        name: "Cognito-Userpool",
+        type: "COGNITO_USER_POOLS",
+        restApiId: restApi.restApiId,
+        identitySource: "method.request.header.x-ytoken",
+        providerArns: [userPool.userPoolArn],
       },
+    )
+
+    restApi.root.addProxy({
+      defaultIntegration: new apigateway.LambdaIntegration(handler),
       defaultMethodOptions: {
-        authorizationType: apigateway.AuthorizationType.COGNITO,
-        /**
-         * If `authorizationType` is `Custom`, this specifies the ID of the method
-         * authorizer resource.
-         */
-        // authorizer?: IAuthorizer,
-        /**
-         * Indicates whether the method requires clients to submit a valid API key.
-         * @default false
-         */
-        // apiKeyRequired?: boolean,
-        /**
-         * The responses that can be sent to the client who calls the method.
-         * @default None
-         *
-         * This property is not required, but if these are not supplied for a Lambda
-         * proxy integration, the Lambda function must return a value of the correct format,
-         * for the integration response to be correctly mapped to a response to the client.
-         * @see https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-settings-method-response.html
-         */
-        // methodResponses?: MethodResponse[],
-        /**
-         * The request parameters that API Gateway accepts. Specify request parameters
-         * as key-value pairs (string-to-Boolean mapping), with a source as the key and
-         * a Boolean as the value. The Boolean specifies whether a parameter is required.
-         * A source must match the format method.request.location.name, where the location
-         * is querystring, path, or header, and name is a valid, unique parameter name.
-         * @default None
-         */
-        // requestParameters?: {
-        //     [param: string]: boolean,
-        // },
-        /**
-         * The resources that are used for the response's content type. Specify request
-         * models as key-value pairs (string-to-string mapping), with a content type
-         * as the key and a Model resource name as the value
-         */
-        // requestModels?: {
-        //     [param: string]: IModel,
-        // },
-        /**
-         * The ID of the associated request validator.
-         */
-        // requestValidator?: IRequestValidator,
+        authorizer: {
+          authorizationType: apigateway.AuthorizationType.COGNITO,
+          authorizerId: cognitoAuthrizer.ref,
+        },
       },
-    })
-
-    new apigateway.CfnAuthorizer(this, "CfnAuthorizer", {
-      name: "CognitoAuthorizer",
-      type: "COGNITO_USER_POOLS",
-      restApiId: restApi.restApiId,
-      providerArns: [userPool.userPoolArn],
-      /**
-       * `AWS::ApiGateway::Authorizer.IdentitySource`
-       * @see http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-apigateway-authorizer.html#cfn-apigateway-authorizer-identitysource
-       */
-      // identitySource?: string,
     })
   }
 }
