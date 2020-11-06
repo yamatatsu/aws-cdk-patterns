@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Metrics snapshot test 1`] = `
+exports[`snapshot test 1`] = `
 Object {
   "Outputs": Object {
     "RestApiEndpoint0551178A": Object {
