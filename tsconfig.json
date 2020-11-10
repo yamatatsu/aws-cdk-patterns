@@ -2,9 +2,7 @@
   "compilerOptions": {
     "target": "es2019",
     "module": "commonjs",
-    "lib": [
-      "es2020"
-    ],
+    "lib": ["es2020"],
     "jsx": "react",
     "declaration": true,
     "declarationMap": true,
