@@ -1,9 +1,6 @@
 import * as cdk from "@aws-cdk/core"
 import * as lambda from "@aws-cdk/aws-lambda"
 import * as apigateway from "@aws-cdk/aws-apigateway"
-import { IFunction, IVersion } from "@aws-cdk/aws-lambda"
-import { IRestApi } from "@aws-cdk/aws-apigateway"
-import { CfnOutput, Stack } from "@aws-cdk/core"
 
 export class ApigatewayVersioning extends cdk.Stack {
   constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
@@ -14,6 +11,9 @@ export class ApigatewayVersioning extends cdk.Stack {
       handler: "index.handler",
       runtime: lambda.Runtime.NODEJS_12_X,
       tracing: lambda.Tracing.ACTIVE,
+      currentVersionOptions: {
+        removalPolicy: cdk.RemovalPolicy.RETAIN,
+      },
     })
 
     const restApi = new apigateway.RestApi(this, "RestApi", {
@@ -29,18 +29,14 @@ export class ApigatewayVersioning extends cdk.Stack {
     fixVersion("v1.0.0", "6")
     fixVersion("v1.0.1", "7")
     fixVersion("v1.0.2", handler.currentVersion.version)
-
-    // `handler.currentVersion.version`を使わなくなるとリソースを削除しようとしてCFnがコケるので呼び出す。
-    new CfnOutput(this, "currentLambdaVersion", {
-      value: handler.currentVersion.version,
-    })
   }
 }
 
-const genFixVersion = (scope: Stack, handler: IFunction, restApi: IRestApi) => (
-  versionName: string,
-  version: string,
-) => {
+const genFixVersion = (
+  scope: cdk.Stack,
+  handler: lambda.IFunction,
+  restApi: apigateway.IRestApi,
+) => (versionName: string, version: string) => {
   const _versionName = versionName.replace(/\./g, "_")
 
   const alias = lambda.Version.fromVersionAttributes(
