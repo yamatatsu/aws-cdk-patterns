@@ -14,17 +14,17 @@
     "build:lambda": "cd lambda; yarn build"
   },
   "dependencies": {
-    "@aws-cdk/assert": "^1.72.0",
-    "@aws-cdk/aws-cloudfront": "^1.72.0",
-    "@aws-cdk/aws-cognito": "^1.72.0",
-    "@aws-cdk/aws-lambda": "^1.72.0",
-    "@aws-cdk/aws-s3": "^1.72.0",
-    "@aws-cdk/aws-s3-deployment": "^1.72.0",
-    "@aws-cdk/core": "^1.72.0",
-    "aws-cdk": "^1.72.0",
+    "@aws-cdk/assert": "^1.75.0",
+    "@aws-cdk/aws-cloudfront": "^1.75.0",
+    "@aws-cdk/aws-cognito": "^1.75.0",
+    "@aws-cdk/aws-lambda": "^1.75.0",
+    "@aws-cdk/aws-s3": "^1.75.0",
+    "@aws-cdk/aws-s3-deployment": "^1.75.0",
+    "@aws-cdk/core": "^1.75.0",
+    "aws-cdk": "^1.75.0",
     "jest": "^26.6.3",
     "jest-circus": "^26.6.3",
-    "ts-jest": "^26.4.3",
-    "typescript": "^4.0.5"
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.2"
   }
 }
