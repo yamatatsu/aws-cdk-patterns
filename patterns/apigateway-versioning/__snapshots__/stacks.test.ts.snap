@@ -29,14 +29,6 @@ Object {
         ],
       },
     },
-    "currentLambdaVersion": Object {
-      "Value": Object {
-        "Fn::GetAtt": Array [
-          "LambdaCurrentVersionDF706F6A4d1309662039316c67f9939518ccc6e3",
-          "Version",
-        ],
-      },
-    },
   },
   "Parameters": Object {
     "AssetParameters231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563ArtifactHash2FD95D4C": Object {
@@ -54,12 +46,14 @@ Object {
   },
   "Resources": Object {
     "LambdaCurrentVersionDF706F6A4d1309662039316c67f9939518ccc6e3": Object {
+      "DeletionPolicy": "Retain",
       "Properties": Object {
         "FunctionName": Object {
           "Ref": "LambdaD247545B",
         },
       },
       "Type": "AWS::Lambda::Version",
+      "UpdateReplacePolicy": "Retain",
     },
     "LambdaD247545B": Object {
       "DependsOn": Array [
