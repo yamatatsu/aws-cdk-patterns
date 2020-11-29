@@ -36,7 +36,7 @@ new GuardDuty(app, "GuardDutyStack", {
 
 new Config(app, "ConfigStack", { env: enviroment })
 
-new Chatbot(app, "ChatbotStack", {
+new Chatbot(app, "SecurityChatbotStack", {
   slackWorkspaceId: SLACK_WORKSPACE_ID,
   slackChannelId: SLACK_CHANNEL_ID,
   notificationTopics: [securityHub.topic],
