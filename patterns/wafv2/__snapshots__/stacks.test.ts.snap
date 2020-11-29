@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test 1`] = `
+Object {
+  "Resources": Object {
+    "AllowSpecificIpAcl": Object {
+      "Properties": Object {
+        "DefaultAction": Object {
+          "Block": Object {},
+        },
+        "Description": "AllowSpecificIpAcl",
+        "Name": "AllowSpecificIpAcl",
+        "Rules": Array [
+          Object {
+            "Name": "AWSCommonRule",
+            "OverrideAction": Object {
+              "None": Object {},
+            },
+            "Priority": 0,
+            "Statement": Object {
+              "ManagedRuleGroupStatement": Object {
+                "ExcludedRules": Array [],
+                "Name": "AWSManagedRulesCommonRuleSet",
+                "VendorName": "AWS",
+              },
+            },
+            "VisibilityConfig": Object {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "RuleWithAWSManagedRulesMetric",
+              "SampledRequestsEnabled": true,
+            },
+          },
+        ],
+        "Scope": "REGIONAL",
+        "VisibilityConfig": Object {
+          "CloudWatchMetricsEnabled": true,
+          "MetricName": "AllowSpecificIpAclMetric",
+          "SampledRequestsEnabled": true,
+        },
+      },
+      "Type": "AWS::WAFv2::WebACL",
+    },
+    "CommonAcl": Object {
+      "Properties": Object {
+        "DefaultAction": Object {
+          "Allow": Object {},
+        },
+        "Description": "CommonAcl",
+        "Name": "CommonAcl",
+        "Rules": Array [
+          Object {
+            "Name": "AWSCommonRule",
+            "OverrideAction": Object {
+              "None": Object {},
+            },
+            "Priority": 0,
+            "Statement": Object {
+              "ManagedRuleGroupStatement": Object {
+                "ExcludedRules": Array [],
+                "Name": "AWSManagedRulesCommonRuleSet",
+                "VendorName": "AWS",
+              },
+            },
+            "VisibilityConfig": Object {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "RuleWithAWSManagedRulesMetric",
+              "SampledRequestsEnabled": true,
+            },
+          },
+        ],
+        "Scope": "REGIONAL",
+        "VisibilityConfig": Object {
+          "CloudWatchMetricsEnabled": true,
+          "MetricName": "CommonAclMetric",
+          "SampledRequestsEnabled": true,
+        },
+      },
+      "Type": "AWS::WAFv2::WebACL",
+    },
+  },
+}
+`;
