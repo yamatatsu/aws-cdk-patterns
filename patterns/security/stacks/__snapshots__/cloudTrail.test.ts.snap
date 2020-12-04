@@ -12,7 +12,7 @@ Object {
       "Properties": Object {
         "CloudWatchLogsLogGroupArn": Object {
           "Fn::GetAtt": Array [
-            "CloudTrailLogGroup2F0A1829",
+            "CloudTrailLogGroup343A29D6",
             "Arn",
           ],
         },
@@ -38,7 +38,7 @@ Object {
       },
       "Type": "AWS::CloudTrail::Trail",
     },
-    "CloudTrailLogGroup2F0A1829": Object {
+    "CloudTrailLogGroup343A29D6": Object {
       "DeletionPolicy": "Retain",
       "Properties": Object {
         "RetentionInDays": 90,
@@ -75,7 +75,7 @@ Object {
               "Effect": "Allow",
               "Resource": Object {
                 "Fn::GetAtt": Array [
-                  "CloudTrailLogGroup2F0A1829",
+                  "CloudTrailLogGroup343A29D6",
                   "Arn",
                 ],
               },

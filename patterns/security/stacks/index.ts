@@ -5,6 +5,7 @@ import { CloudTrail } from "./CloudTrail"
 import { GuardDuty } from "./GuardDuty"
 import { Config } from "./config"
 import { Chatbot } from "./Chatbot"
+import { RootAccountUsage } from "./CIS-1.1-RootAccountUsage"
 
 dotenv.config()
 
@@ -26,7 +27,7 @@ const securityHub = new SecurityHub(app, "SecurityHubStack", {
   env: enviroment,
 })
 
-new CloudTrail(app, "CloudTrailStack", {
+const cloudTrail = new CloudTrail(app, "CloudTrailStack", {
   env: enviroment,
 })
 
@@ -36,9 +37,14 @@ new GuardDuty(app, "GuardDutyStack", {
 
 new Config(app, "ConfigStack", { env: enviroment })
 
+const rootAccountUsage = new RootAccountUsage(app, "RootAccountUsage", {
+  env: enviroment,
+  logGroup: cloudTrail.logGroup,
+})
+
 new Chatbot(app, "SecurityChatbotStack", {
   slackWorkspaceId: SLACK_WORKSPACE_ID,
   slackChannelId: SLACK_CHANNEL_ID,
-  notificationTopics: [securityHub.topic],
+  notificationTopics: [securityHub.topic, rootAccountUsage.topic],
   env: enviroment,
 })

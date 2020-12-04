@@ -190,6 +190,19 @@
     "@aws-cdk/core" "1.75.0"
     constructs "^3.2.0"
 
+"@aws-cdk/aws-cloudwatch-actions@1.75.0":
+  version "1.75.0"
+  resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudwatch-actions/-/aws-cloudwatch-actions-1.75.0.tgz#e4a729ebb3aaab10754747c82fb3b3c93d3e9dff"
+  integrity sha512-bEBbRGCNwqFI6PJvbaDh/ZEA0wIzKjXvS6viRsfNj6WlbUFbq3Hy/8l1TVph4O8vDDdUfus0r76BDaUl5v4dXQ==
+  dependencies:
+    "@aws-cdk/aws-applicationautoscaling" "1.75.0"
+    "@aws-cdk/aws-autoscaling" "1.75.0"
+    "@aws-cdk/aws-cloudwatch" "1.75.0"
+    "@aws-cdk/aws-iam" "1.75.0"
+    "@aws-cdk/aws-sns" "1.75.0"
+    "@aws-cdk/core" "1.75.0"
+    constructs "^3.2.0"
+
 "@aws-cdk/aws-cloudwatch@1.75.0", "@aws-cdk/aws-cloudwatch@^1.75.0":
   version "1.75.0"
   resolved "https://registry.yarnpkg.com/@aws-cdk/aws-cloudwatch/-/aws-cloudwatch-1.75.0.tgz#4ed75eb6f4f70c2b4bf5056c2e62a636c94e183e"
