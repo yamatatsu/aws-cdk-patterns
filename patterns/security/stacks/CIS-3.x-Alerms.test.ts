@@ -1,7 +1,7 @@
 import { SynthUtils } from "@aws-cdk/assert"
 import * as cdk from "@aws-cdk/core"
 import * as logs from "@aws-cdk/aws-logs"
-import { RootAccountUsage } from "./CIS-1.1-RootAccountUsage"
+import { Cis3xAlerms } from "./CIS-3.x-Alerms"
 
 test("snapshot test", () => {
   const app = new cdk.App()
@@ -9,7 +9,7 @@ test("snapshot test", () => {
 
   const logGroup = new logs.LogGroup(stack, "test-LogGroup")
 
-  const target = new RootAccountUsage(app, "Target", {
+  const target = new Cis3xAlerms(app, "Target", {
     logGroup,
   })
 

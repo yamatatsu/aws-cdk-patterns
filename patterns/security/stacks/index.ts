@@ -5,7 +5,7 @@ import { CloudTrail } from "./CloudTrail"
 import { GuardDuty } from "./GuardDuty"
 import { Config } from "./config"
 import { Chatbot } from "./Chatbot"
-import { RootAccountUsage } from "./CIS-1.1-RootAccountUsage"
+import { Cis3xAlerms } from "./CIS-3.x-Alerms"
 
 dotenv.config()
 
@@ -37,7 +37,7 @@ new GuardDuty(app, "GuardDutyStack", {
 
 new Config(app, "ConfigStack", { env: enviroment })
 
-const rootAccountUsage = new RootAccountUsage(app, "RootAccountUsage", {
+const cis3xAlerms = new Cis3xAlerms(app, "Cis3xAlerms", {
   env: enviroment,
   logGroup: cloudTrail.logGroup,
 })
@@ -45,6 +45,6 @@ const rootAccountUsage = new RootAccountUsage(app, "RootAccountUsage", {
 new Chatbot(app, "SecurityChatbotStack", {
   slackWorkspaceId: SLACK_WORKSPACE_ID,
   slackChannelId: SLACK_CHANNEL_ID,
-  notificationTopics: [securityHub.topic, rootAccountUsage.topic],
+  notificationTopics: [securityHub.topic, ...cis3xAlerms.topics],
   env: enviroment,
 })
