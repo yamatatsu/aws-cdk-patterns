@@ -4,10 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "cdk": "cdk",
-    "synth": "cdk synth",
-    "deploy": "cdk deploy",
-    "diff": "cdk diff",
     "test": "jest"
   },
   "dependencies": {
