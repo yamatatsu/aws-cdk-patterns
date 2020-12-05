@@ -58,3 +58,15 @@ AWS console の security hub のとこから title が以下の Finding を reso
 ### 3. 手動でしか対応できないこと
 
 TBD
+
+### 4. 対応しない Findings
+
+- https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#iam-6-remediation
+  - Root アカウントが WebAuthn に対応したらルールもそれに揃えて変わるはず。
+  - re:invent 2020 で AWS SSO が WebAuthn 対応したし、Root アカウントも対応される。はず。
+- https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.14-remediation
+  - 同上
+- https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#iam-7-remediation
+  - ポリシーが古い。平成。
+- https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.11-remediation
+  - 同上
