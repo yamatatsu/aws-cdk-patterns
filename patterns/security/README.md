@@ -63,7 +63,7 @@ TBD
 
 - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#iam-6-remediation
   - Root アカウントが WebAuthn に対応したらルールもそれに揃えて変わるはず。
-  - re:invent 2020 で AWS SSO が WebAuthn 対応したし、Root アカウントも対応される。はず。
+  - re:invent 2020 で AWS SSO が WebAuthn 対応したし、Root アカウントもそのうち対応される。はず。対応されたい。願い。
 - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.14-remediation
   - 同上
 - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#iam-7-remediation
