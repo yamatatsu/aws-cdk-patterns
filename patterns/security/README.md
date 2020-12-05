@@ -48,25 +48,13 @@ AWS console の security hub のとこから title が以下の Finding を reso
 
 ### 2. script の実行
 
-- AWS Foundational Security Best Practices の ec2-7 に対応する script(CDK ではできなかった)
-
+- AWS Foundational Security Best Practices の ec2-7 に対応する script  
   `./scripts/fsbp-ec2-7.sh`
-
   - 参考: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#ec2-7-remediation
+- CIS AWS Foundations Benchmark controls の 1.9 に対応する script  
+  `./scripts/cis-1.9.sh`
+  - 参考: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.9-remediation
 
 ### 3. 手動でしか対応できないこと
 
-#### 3.1 Root アカウントの MFA 有効化
-
-Root アカウントの MFA を有効化しないと「Critical!!」って怒られるので対応する。
-
-やり方: https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.14-remediation
-
-できたら手動で resolve としてマークする。
-
-CDK 実行によって解決可能だが、自動では解決済みとして判定されてない Findings に関して手動で resolve としてマークする必要がある。
-
-AWS console の security hub のとこから title が以下の Finding を resolve にする。
-
-- IAM.6 Hardware MFA should be enabled for the root user
-- 1.14 Ensure hardware MFA is enabled for the "root" account
+TBD
