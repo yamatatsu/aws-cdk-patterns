@@ -17,6 +17,8 @@ export class CloudTrail extends cdk.Stack {
     const key = new kms.Key(this, "KmsKey", {
       description: "For CloudTrail Storage Encryption",
       alias: "for-cloud-trail-storage-encryption",
+      // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-2.8-remediation
+      enableKeyRotation: true,
       // For private AWS account
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     })

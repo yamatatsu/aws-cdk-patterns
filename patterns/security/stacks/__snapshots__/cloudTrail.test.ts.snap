@@ -163,6 +163,7 @@ Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
         "Description": "For CloudTrail Storage Encryption",
+        "EnableKeyRotation": true,
         "KeyPolicy": Object {
           "Statement": Array [
             Object {
