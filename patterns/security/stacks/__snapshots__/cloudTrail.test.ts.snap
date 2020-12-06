@@ -7,7 +7,7 @@ Object {
       "DependsOn": Array [
         "CloudTrailLogsRoleDefaultPolicyD9019B15",
         "CloudTrailLogsRole9F6E6663",
-        "CloudTrailS3PolicyEA49A03E",
+        "CloudTrailBucketPolicy2A856177",
       ],
       "Properties": Object {
         "CloudWatchLogsLogGroupArn": Object {
@@ -39,10 +39,159 @@ Object {
           ],
         },
         "S3BucketName": Object {
-          "Ref": "CloudTrailS310CD22F2",
+          "Ref": "CloudTrailBucket98B0BFE1",
         },
       },
       "Type": "AWS::CloudTrail::Trail",
+    },
+    "CloudTrailBucket98B0BFE1": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "BucketEncryption": Object {
+          "ServerSideEncryptionConfiguration": Array [
+            Object {
+              "ServerSideEncryptionByDefault": Object {
+                "KMSMasterKeyID": Object {
+                  "Fn::GetAtt": Array [
+                    "KmsKey46693ADD",
+                    "Arn",
+                  ],
+                },
+                "SSEAlgorithm": "aws:kms",
+              },
+            },
+          ],
+        },
+        "LoggingConfiguration": Object {
+          "DestinationBucketName": Object {
+            "Ref": "CloudTrailBucketAccessLogBucket2C140369",
+          },
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "CloudTrailBucketAccessLogBucket2C140369": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "AccessControl": "LogDeliveryWrite",
+        "BucketEncryption": Object {
+          "ServerSideEncryptionConfiguration": Array [
+            Object {
+              "ServerSideEncryptionByDefault": Object {
+                "KMSMasterKeyID": Object {
+                  "Fn::GetAtt": Array [
+                    "KmsKey46693ADD",
+                    "Arn",
+                  ],
+                },
+                "SSEAlgorithm": "aws:kms",
+              },
+            },
+          ],
+        },
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "CloudTrailBucketAccessLogBucketPolicy9223E689": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "CloudTrailBucketAccessLogBucket2C140369",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "s3:*",
+              "Condition": Object {
+                "Bool": Object {
+                  "aws:SecureTransport": "false",
+                },
+              },
+              "Effect": "Deny",
+              "Principal": "*",
+              "Resource": Array [
+                "arn:aws:s3:::awsexamplebucket",
+                "arn:aws:s3:::awsexamplebucket/*",
+              ],
+              "Sid": "AllowSSLRequestsOnly",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+    "CloudTrailBucketPolicy2A856177": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "CloudTrailBucket98B0BFE1",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "s3:*",
+              "Condition": Object {
+                "Bool": Object {
+                  "aws:SecureTransport": "false",
+                },
+              },
+              "Effect": "Deny",
+              "Principal": "*",
+              "Resource": Array [
+                "arn:aws:s3:::awsexamplebucket",
+                "arn:aws:s3:::awsexamplebucket/*",
+              ],
+              "Sid": "AllowSSLRequestsOnly",
+            },
+            Object {
+              "Action": "s3:GetBucketAcl",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "cloudtrail.amazonaws.com",
+              },
+              "Resource": Object {
+                "Fn::GetAtt": Array [
+                  "CloudTrailBucket98B0BFE1",
+                  "Arn",
+                ],
+              },
+            },
+            Object {
+              "Action": "s3:PutObject",
+              "Condition": Object {
+                "StringEquals": Object {
+                  "s3:x-amz-acl": "bucket-owner-full-control",
+                },
+              },
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "cloudtrail.amazonaws.com",
+              },
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    Object {
+                      "Fn::GetAtt": Array [
+                        "CloudTrailBucket98B0BFE1",
+                        "Arn",
+                      ],
+                    },
+                    "/AWSLogs/",
+                    Object {
+                      "Ref": "AWS::AccountId",
+                    },
+                    "/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
     },
     "CloudTrailLogGroup343A29D6": Object {
       "DeletionPolicy": "Retain",
@@ -97,67 +246,6 @@ Object {
         ],
       },
       "Type": "AWS::IAM::Policy",
-    },
-    "CloudTrailS310CD22F2": Object {
-      "DeletionPolicy": "Retain",
-      "Type": "AWS::S3::Bucket",
-      "UpdateReplacePolicy": "Retain",
-    },
-    "CloudTrailS3PolicyEA49A03E": Object {
-      "Properties": Object {
-        "Bucket": Object {
-          "Ref": "CloudTrailS310CD22F2",
-        },
-        "PolicyDocument": Object {
-          "Statement": Array [
-            Object {
-              "Action": "s3:GetBucketAcl",
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "cloudtrail.amazonaws.com",
-              },
-              "Resource": Object {
-                "Fn::GetAtt": Array [
-                  "CloudTrailS310CD22F2",
-                  "Arn",
-                ],
-              },
-            },
-            Object {
-              "Action": "s3:PutObject",
-              "Condition": Object {
-                "StringEquals": Object {
-                  "s3:x-amz-acl": "bucket-owner-full-control",
-                },
-              },
-              "Effect": "Allow",
-              "Principal": Object {
-                "Service": "cloudtrail.amazonaws.com",
-              },
-              "Resource": Object {
-                "Fn::Join": Array [
-                  "",
-                  Array [
-                    Object {
-                      "Fn::GetAtt": Array [
-                        "CloudTrailS310CD22F2",
-                        "Arn",
-                      ],
-                    },
-                    "/AWSLogs/",
-                    Object {
-                      "Ref": "AWS::AccountId",
-                    },
-                    "/*",
-                  ],
-                ],
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-      },
-      "Type": "AWS::S3::BucketPolicy",
     },
     "KmsKey46693ADD": Object {
       "DeletionPolicy": "Delete",
