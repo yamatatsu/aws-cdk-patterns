@@ -6,6 +6,7 @@ import { GuardDuty } from "./GuardDuty"
 import { Config } from "./config"
 import { Chatbot } from "./Chatbot"
 import { Cis3xAlerms } from "./CIS-3.x-Alerms"
+import { Cis_1_20_AwsSupportAccessRole } from "./CIS-1.20-AwsSupportAccessRole"
 
 dotenv.config()
 
@@ -41,6 +42,7 @@ const cis3xAlerms = new Cis3xAlerms(app, "Cis3xAlerms", {
   env: enviroment,
   logGroup: cloudTrail.logGroup,
 })
+new Cis_1_20_AwsSupportAccessRole(app, "Cis-1-20-AwsSupportAccessRole")
 
 new Chatbot(app, "SecurityChatbotStack", {
   slackWorkspaceId: SLACK_WORKSPACE_ID,
