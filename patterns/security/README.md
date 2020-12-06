@@ -61,12 +61,19 @@ TBD
 
 ### 4. 対応しない Findings
 
-- https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#iam-6-remediation
+以下で示す Finding は suppressed としてマークする
+
+- ハードウェア MFA デバイス
   - Root アカウントが WebAuthn に対応したらルールもそれに揃えて変わるはず。
   - re:invent 2020 で AWS SSO が WebAuthn 対応したし、Root アカウントもそのうち対応される。はず。対応されたい。願い。
-- https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.14-remediation
-  - 同上
-- https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#iam-7-remediation
-  - ポリシーが古い。平成。
-- https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.11-remediation
-  - 同上
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#iam-6-remediation
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.14-remediation
+- [NIST Special Publication 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html#memsecret) からの解離
+  - 古いパスワードポリシーの慣習には従わない
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#iam-7-remediation
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.11-remediation
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.5-remediation
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.6-remediation
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.7-remediation
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.8-remediation
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.10-remediation
