@@ -255,11 +255,11 @@ const rulePropsList: {
   {
     identifier: "IAM_PASSWORD_POLICY",
     inputParameters: {
-      RequireUppercaseCharacters: true,
-      RequireLowercaseCharacters: true,
-      RequireSymbols: true,
-      RequireNumbers: true,
-      MinimumPasswordLength: 6,
+      RequireUppercaseCharacters: false,
+      RequireLowercaseCharacters: false,
+      RequireSymbols: false,
+      RequireNumbers: false,
+      MinimumPasswordLength: 14,
       PasswordReusePrevention: 1,
     },
   },
