@@ -19,9 +19,20 @@ Object {
       "Type": "AWS::Config::ConfigRule",
     },
     "ConfigBucket2112C5EC": Object {
-      "DeletionPolicy": "Retain",
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "BucketEncryption": Object {
+          "ServerSideEncryptionConfiguration": Array [
+            Object {
+              "ServerSideEncryptionByDefault": Object {
+                "SSEAlgorithm": "AES256",
+              },
+            },
+          ],
+        },
+      },
       "Type": "AWS::S3::Bucket",
-      "UpdateReplacePolicy": "Retain",
+      "UpdateReplacePolicy": "Delete",
     },
     "ConfigRoleF94F46B6": Object {
       "Properties": Object {
@@ -870,12 +881,12 @@ Object {
       ],
       "Properties": Object {
         "InputParameters": Object {
-          "MinimumPasswordLength": 6,
+          "MinimumPasswordLength": 14,
           "PasswordReusePrevention": 1,
-          "RequireLowercaseCharacters": true,
-          "RequireNumbers": true,
-          "RequireSymbols": true,
-          "RequireUppercaseCharacters": true,
+          "RequireLowercaseCharacters": false,
+          "RequireNumbers": false,
+          "RequireSymbols": false,
+          "RequireUppercaseCharacters": false,
         },
         "Source": Object {
           "Owner": "AWS",

@@ -49,7 +49,8 @@ export class CloudTrail extends cdk.Stack {
       this,
       "CloudTrailBucketAccessLogBucket",
       {
-        encryptionKey: key,
+        // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#s3-4-remediation
+        encryption: s3.BucketEncryption.S3_MANAGED,
         // For private AWS account
         removalPolicy: cdk.RemovalPolicy.DESTROY,
       },
@@ -61,7 +62,7 @@ export class CloudTrail extends cdk.Stack {
       // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-2.7-remediation
       // and
       // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#cloudtrail-2-remediation
-      encryptionKey: key,
+      encryption: s3.BucketEncryption.KMS_MANAGED,
       // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-2.6-remediation
       serverAccessLogsBucket: accessLogBucket,
       // For private AWS account
@@ -80,7 +81,7 @@ export class CloudTrail extends cdk.Stack {
       // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-2.7-remediation
       // and
       // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#cloudtrail-2-remediation
-      encryptionKey: key,
+      // encryptionKey: key,
       bucket,
     })
 

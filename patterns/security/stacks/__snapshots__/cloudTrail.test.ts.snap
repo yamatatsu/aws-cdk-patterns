@@ -32,12 +32,6 @@ Object {
         "IncludeGlobalServiceEvents": true,
         "IsLogging": true,
         "IsMultiRegionTrail": true,
-        "KMSKeyId": Object {
-          "Fn::GetAtt": Array [
-            "KmsKey46693ADD",
-            "Arn",
-          ],
-        },
         "S3BucketName": Object {
           "Ref": "CloudTrailBucket98B0BFE1",
         },
@@ -51,12 +45,6 @@ Object {
           "ServerSideEncryptionConfiguration": Array [
             Object {
               "ServerSideEncryptionByDefault": Object {
-                "KMSMasterKeyID": Object {
-                  "Fn::GetAtt": Array [
-                    "KmsKey46693ADD",
-                    "Arn",
-                  ],
-                },
                 "SSEAlgorithm": "aws:kms",
               },
             },
@@ -79,13 +67,7 @@ Object {
           "ServerSideEncryptionConfiguration": Array [
             Object {
               "ServerSideEncryptionByDefault": Object {
-                "KMSMasterKeyID": Object {
-                  "Fn::GetAtt": Array [
-                    "KmsKey46693ADD",
-                    "Arn",
-                  ],
-                },
-                "SSEAlgorithm": "aws:kms",
+                "SSEAlgorithm": "AES256",
               },
             },
           ],

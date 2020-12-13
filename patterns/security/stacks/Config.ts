@@ -10,7 +10,12 @@ export class Config extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props)
 
-    const bucket = new s3.Bucket(this, "ConfigBucket")
+    const bucket = new s3.Bucket(this, "ConfigBucket", {
+      // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#s3-4-remediation
+      encryption: s3.BucketEncryption.S3_MANAGED,
+      // For private AWS account
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+    })
     const topic = new sns.Topic(this, "ConfigTopic")
     const role = new iam.Role(this, "ConfigRole", {
       assumedBy: new iam.ServicePrincipal("config.amazonaws.com"),
