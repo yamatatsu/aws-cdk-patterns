@@ -4,6 +4,8 @@ import * as iam from "@aws-cdk/aws-iam"
 import * as s3 from "@aws-cdk/aws-s3"
 import * as sns from "@aws-cdk/aws-sns"
 
+import { addSslOnlyPolicyToBucket } from "./util"
+
 export class Config extends cdk.Stack {
   public readonly topic: sns.ITopic
 
@@ -16,6 +18,9 @@ export class Config extends cdk.Stack {
       // For private AWS account
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     })
+    // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#s3-5-remediation
+    addSslOnlyPolicyToBucket(bucket)
+
     const topic = new sns.Topic(this, "ConfigTopic")
     const role = new iam.Role(this, "ConfigRole", {
       assumedBy: new iam.ServicePrincipal("config.amazonaws.com"),
