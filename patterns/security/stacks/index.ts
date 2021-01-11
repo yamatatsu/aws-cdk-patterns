@@ -24,7 +24,7 @@ const enviroment: cdk.Environment = {
   region: "ap-northeast-1",
 }
 
-const securityHub = new SecurityHub(app, "SecurityHubStack", {
+new SecurityHub(app, "SecurityHubStack", {
   env: enviroment,
 })
 
@@ -32,7 +32,7 @@ const cloudTrail = new CloudTrail(app, "CloudTrailStack", {
   env: enviroment,
 })
 
-new GuardDuty(app, "GuardDutyStack", {
+const guardDuty = new GuardDuty(app, "GuardDutyStack", {
   env: enviroment,
 })
 
@@ -47,6 +47,6 @@ new Cis_1_20_AwsSupportAccessRole(app, "Cis-1-20-AwsSupportAccessRole")
 new Chatbot(app, "SecurityChatbotStack", {
   slackWorkspaceId: SLACK_WORKSPACE_ID,
   slackChannelId: SLACK_CHANNEL_ID,
-  notificationTopics: [securityHub.topic, ...cis3xAlerms.topics],
+  notificationTopics: [guardDuty.topic, ...cis3xAlerms.topics],
   env: enviroment,
 })
