@@ -1,13 +1,4 @@
 module.exports = {
-  clearMocks: true,
-  moduleFileExtensions: ["js", "ts"],
-  testEnvironment: "node",
-  testMatch: ["**/*.test.ts"],
-  testRunner: "jest-circus/runner",
-  transform: {
-    "^.+\\.ts$": "ts-jest",
-  },
-  verbose: true,
-  modulePathIgnorePatterns: ["cdk.out", "dist", "layer-dist"],
-  modulePaths: ["lambda"],
-};
+  preset: "ts-jest",
+  modulePathIgnorePatterns: ["cdk.out", "dist", "layer-dist", "lambda"],
+}
