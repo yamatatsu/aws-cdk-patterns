@@ -5,8 +5,12 @@ import * as cloudfront from "@aws-cdk/aws-cloudfront"
 import * as cognito from "@aws-cdk/aws-cognito"
 import * as lambda from "@aws-cdk/aws-lambda"
 
+type Props = cdk.StackProps & {
+  lambdaCode: lambda.Code
+  staticContents: s3Deploy.ISource
+}
 export class PrivateCloudfrontAmplify extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
+  constructor(parent: cdk.App, id: string, props: Props) {
     super(parent, id, props)
 
     const userPool = new cognito.UserPool(this, "UserPool", {
@@ -28,10 +32,9 @@ export class PrivateCloudfrontAmplify extends cdk.Stack {
       cognitoDomain: { domainPrefix: "private-cloudfront-amplify" },
     })
 
-    const lambdaCode = new lambda.AssetCode("./lambda/dist")
     const authCheckLambda = new lambda.Function(this, "signInRedirectTarget", {
       handler: "index.authCheck",
-      code: lambdaCode,
+      code: props.lambdaCode,
       runtime: lambda.Runtime.NODEJS_12_X,
     })
     const rewriteToIndexHtmlLambda = new lambda.Function(
@@ -39,7 +42,7 @@ export class PrivateCloudfrontAmplify extends cdk.Stack {
       "rewriteToIndexHtml",
       {
         handler: "index.rewriteToIndexHtml",
-        code: lambdaCode,
+        code: props.lambdaCode,
         runtime: lambda.Runtime.NODEJS_12_X,
       },
     )
@@ -48,9 +51,8 @@ export class PrivateCloudfrontAmplify extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     })
 
-    const staticContents = s3Deploy.Source.asset("./front/build")
     new s3Deploy.BucketDeployment(this, "DeployWebsite", {
-      sources: [staticContents],
+      sources: [props.staticContents],
       destinationBucket: bucket,
       retainOnDelete: false,
     })
