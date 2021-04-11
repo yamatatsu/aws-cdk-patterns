@@ -13,18 +13,18 @@
     "deploy": "docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.54",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.54",
-    "aws-amplify": "^3.3.14",
-    "aws-amplify-react": "^4.2.18",
-    "classnames": "^2.2.6",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "@docusaurus/core": "2.0.0-alpha.54",
+    "@docusaurus/preset-classic": "2.0.0-alpha.54",
+    "aws-amplify": "3.3.14",
+    "aws-amplify-react": "4.2.18",
+    "classnames": "2.2.6",
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.7",
-    "parcel": "^1.12.4"
+    "@types/react": "16.14.2",
+    "@types/react-dom": "16.9.10",
+    "parcel": "1.12.4"
   },
   "browserslist": {
     "production": [
