@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test 1`] = `
+Object {
+  "Resources": Object {
+    "SecurityHub": Object {
+      "Type": "AWS::SecurityHub::Hub",
+    },
+    "SecurityHubNotificationRule02379247": Object {
+      "Properties": Object {
+        "Description": "Alert to SNS topic when find threats by SecurityHub",
+        "EventPattern": Object {
+          "detail": Object {
+            "findings": Object {
+              "Compliance": Object {
+                "Status": Array [
+                  Object {
+                    "anything-but": "PASSED",
+                  },
+                ],
+              },
+              "RecordState": Array [
+                "ARCHIVED",
+              ],
+            },
+          },
+          "detail-type": Array [
+            "Security Hub Findings - Imported",
+          ],
+          "source": Array [
+            "aws.securityhub",
+          ],
+        },
+        "Name": "AlertSecurityHubFindings",
+        "State": "ENABLED",
+        "Targets": Array [
+          Object {
+            "Arn": Object {
+              "Ref": "SecurityHubTopicA93309F7",
+            },
+            "Id": "Target0",
+          },
+        ],
+      },
+      "Type": "AWS::Events::Rule",
+    },
+    "SecurityHubTopicA93309F7": Object {
+      "Type": "AWS::SNS::Topic",
+    },
+    "SecurityHubTopicPolicyE02112B5": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sns:Publish",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "events.amazonaws.com",
+              },
+              "Resource": Object {
+                "Ref": "SecurityHubTopicA93309F7",
+              },
+              "Sid": "0",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Topics": Array [
+          Object {
+            "Ref": "SecurityHubTopicA93309F7",
+          },
+        ],
+      },
+      "Type": "AWS::SNS::TopicPolicy",
+    },
+    "ServiceLinkedRoleForSecurityHub": Object {
+      "Properties": Object {
+        "AWSServiceName": "securityhub.amazonaws.com",
+        "Description": "A service-linked role required for AWS Security Hub to access your resources.",
+      },
+      "Type": "AWS::IAM::ServiceLinkedRole",
+    },
+  },
+}
+`;

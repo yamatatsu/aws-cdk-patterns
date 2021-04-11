@@ -4,7 +4,7 @@ import { SecurityHub } from "./SecurityHub"
 import { CloudTrail } from "./CloudTrail"
 import { GuardDuty } from "./GuardDuty"
 import { Config } from "./config"
-import { Chatbot } from "./_Chatbot"
+import { Chatbot } from "./Chatbot"
 import { Cis3xAlerms } from "./CIS-3.x-Alerms"
 import { Cis_1_20_AwsSupportAccessRole } from "./CIS-1.20-AwsSupportAccessRole"
 
