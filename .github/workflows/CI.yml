@@ -16,9 +16,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: |
-          node -v
-          yarn -v
+      - run: node -v
+      - run: yarn -v
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
