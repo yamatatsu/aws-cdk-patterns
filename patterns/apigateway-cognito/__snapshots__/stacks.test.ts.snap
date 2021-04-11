@@ -382,6 +382,7 @@ Object {
       "Type": "AWS::ApiGateway::Resource",
     },
     "UserPool6BA7E5F2": Object {
+      "DeletionPolicy": "Retain",
       "Properties": Object {
         "AccountRecoverySetting": Object {
           "RecoveryMechanisms": Array [
@@ -415,6 +416,7 @@ Object {
         },
       },
       "Type": "AWS::Cognito::UserPool",
+      "UpdateReplacePolicy": "Retain",
     },
     "UserPoolClient2F5918F7": Object {
       "Properties": Object {
