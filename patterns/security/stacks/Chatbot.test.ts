@@ -1,7 +1,7 @@
 import { SynthUtils } from "@aws-cdk/assert"
 import * as cdk from "@aws-cdk/core"
 import * as sns from "@aws-cdk/aws-sns"
-import { Chatbot } from "./chatbot"
+import { Chatbot } from "./Chatbot"
 
 test("snapshot test", () => {
   const app = new cdk.App()
