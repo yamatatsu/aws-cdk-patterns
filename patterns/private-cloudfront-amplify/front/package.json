@@ -13,8 +13,8 @@
     "deploy": "docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-alpha.54",
-    "@docusaurus/preset-classic": "2.0.0-alpha.54",
+    "@docusaurus/core": "2.0.0-alpha.ffe8b6106",
+    "@docusaurus/preset-classic": "2.0.0-alpha.ffe8b6106",
     "aws-amplify": "3.3.26",
     "aws-amplify-react": "4.2.30",
     "classnames": "2.3.1",
