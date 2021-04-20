@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test 1`] = `
+Object {
+  "Parameters": Object {
+    "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77ArtifactHashB027615C": Object {
+      "Description": "Artifact hash for asset \\"3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77\\"",
+      "Type": "String",
+    },
+    "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3Bucket19CAC3FD": Object {
+      "Description": "S3 bucket for asset \\"3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77\\"",
+      "Type": "String",
+    },
+    "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3VersionKeyE2983DB2": Object {
+      "Description": "S3 key for asset version \\"3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77\\"",
+      "Type": "String",
+    },
+  },
+  "Resources": Object {
+    "Bucket83908E77": Object {
+      "DeletionPolicy": "Delete",
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "Canary11957FE2": Object {
+      "Properties": Object {
+        "ArtifactS3Location": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "s3://",
+              Object {
+                "Ref": "Bucket83908E77",
+              },
+            ],
+          ],
+        },
+        "Code": Object {
+          "Handler": "index.handler",
+          "S3Bucket": Object {
+            "Ref": "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3Bucket19CAC3FD",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3VersionKeyE2983DB2",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3VersionKeyE2983DB2",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "ExecutionRoleArn": Object {
+          "Fn::GetAtt": Array [
+            "CanaryServiceRoleD132250E",
+            "Arn",
+          ],
+        },
+        "Name": "targetcanary9841ca23",
+        "RuntimeVersion": "syn-nodejs-puppeteer-3.0",
+        "Schedule": Object {
+          "DurationInSeconds": "300",
+          "Expression": "rate(60 minutes)",
+        },
+        "StartCanaryAfterCreation": true,
+      },
+      "Type": "AWS::Synthetics::Canary",
+    },
+    "CanaryServiceRoleD132250E": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "Policies": Array [
+          Object {
+            "PolicyDocument": Object {
+              "Statement": Array [
+                Object {
+                  "Action": "s3:ListAllMyBuckets",
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                Object {
+                  "Action": Array [
+                    "s3:PutObject",
+                    "s3:GetBucketLocation",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": Object {
+                    "Fn::Join": Array [
+                      "",
+                      Array [
+                        Object {
+                          "Fn::GetAtt": Array [
+                            "Bucket83908E77",
+                            "Arn",
+                          ],
+                        },
+                        "/*",
+                      ],
+                    ],
+                  },
+                },
+                Object {
+                  "Action": "cloudwatch:PutMetricData",
+                  "Condition": Object {
+                    "StringEquals": Object {
+                      "cloudwatch:namespace": "CloudWatchSynthetics",
+                    },
+                  },
+                  "Effect": "Allow",
+                  "Resource": "*",
+                },
+                Object {
+                  "Action": Array [
+                    "logs:CreateLogStream",
+                    "logs:CreateLogGroup",
+                    "logs:PutLogEvents",
+                  ],
+                  "Effect": "Allow",
+                  "Resource": Object {
+                    "Fn::Join": Array [
+                      "",
+                      Array [
+                        "arn:",
+                        Object {
+                          "Ref": "AWS::Partition",
+                        },
+                        ":logs:::*",
+                      ],
+                    ],
+                  },
+                },
+              ],
+              "Version": "2012-10-17",
+            },
+            "PolicyName": "canaryPolicy",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;
