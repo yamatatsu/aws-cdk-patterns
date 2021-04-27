@@ -10,6 +10,7 @@ export class Ec2AutoScaling extends cdk.Stack {
 
     const vpc = new ec2.Vpc(this, "Vpc", {
       maxAzs: 2,
+      // これやるとnat代かからないけどprivate subnetが生成されないから、3層アーキテクチャできてない。
       natGateways: 0,
     })
 
