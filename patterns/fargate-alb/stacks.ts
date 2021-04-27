@@ -11,7 +11,6 @@ export class FargateAlb extends cdk.Stack {
 
     const vpc = new ec2.Vpc(this, "Vpc", {
       maxAzs: 2,
-      // 素振りではnat代をケチりたい
       natGatewayProvider: ec2.NatInstanceProvider.instance({
         instanceType: new ec2.InstanceType("t2.nano"),
       }),
@@ -64,56 +63,5 @@ export class FargateAlb extends cdk.Stack {
       // TODO: serviceに複数のweb serverがあるときにどんな挙動をするのか？
       targets: [service],
     })
-
-    // // /////////////////
-    // // Pipeline
-
-    // const sourceOutputArtifact = new codepipeline.Artifact("SourceOutput")
-
-    // const bucket = new s3.Bucket(this, "Bucket", {
-    //   removalPolicy: cdk.RemovalPolicy.DESTROY,
-    //   // `versioned: true` is needed for CodePipeline
-    //   versioned: true,
-    // })
-    // const sourceAction = new S3SourceAction({
-    //   actionName: "sourceAction",
-    //   bucket,
-    //   bucketKey: "deploy/index.js",
-    //   output: sourceOutputArtifact,
-    // })
-    // // new GitHubSourceAction({
-    // //   actionName: "sourceAction",
-    // //   output: sourceOutputArtifact,
-    // //   owner: "yamatatsu",
-    // //   repo: "aws-cdk-patterns",
-    // //   branch: "main",
-    // //   oauthToken: cdk.SecretValue.plainText("");
-    // //   trigger: GitHubTrigger.WEBHOOK
-    // // })
-
-    // const application = new codedeploy.ServerApplication(
-    //   this,
-    //   "ServerApplication",
-    // )
-
-    // const deploymentGroup = new codedeploy.ServerDeploymentGroup(
-    //   this,
-    //   "ServerDeploymentGroup",
-    //   {
-    //     application,
-    //     autoScalingGroups: [autoScalingGroup],
-    //   },
-    // )
-
-    // const deployAction = new CodeDeployServerDeployAction({
-    //   actionName: "deployAction",
-    //   input: sourceOutputArtifact,
-    //   deploymentGroup: deploymentGroup,
-    // })
-
-    // const pipeline = new codepipeline.Pipeline(this, "Pipeline", {})
-
-    // pipeline.addStage({ stageName: "sourceStage", actions: [sourceAction] })
-    // pipeline.addStage({ stageName: "deployStage", actions: [deployAction] })
   }
 }
