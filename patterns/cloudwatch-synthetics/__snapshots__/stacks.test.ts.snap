@@ -3,16 +3,16 @@
 exports[`snapshot test 1`] = `
 Object {
   "Parameters": Object {
-    "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77ArtifactHashB027615C": Object {
-      "Description": "Artifact hash for asset \\"3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77\\"",
+    "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fArtifactHashD57FC119": Object {
+      "Description": "Artifact hash for asset \\"8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058f\\"",
       "Type": "String",
     },
-    "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3Bucket19CAC3FD": Object {
-      "Description": "S3 bucket for asset \\"3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77\\"",
+    "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3Bucket6EF2D9FC": Object {
+      "Description": "S3 bucket for asset \\"8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058f\\"",
       "Type": "String",
     },
-    "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3VersionKeyE2983DB2": Object {
-      "Description": "S3 key for asset version \\"3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77\\"",
+    "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3VersionKey340E88CF": Object {
+      "Description": "S3 key for asset version \\"8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058f\\"",
       "Type": "String",
     },
   },
@@ -38,7 +38,7 @@ Object {
         "Code": Object {
           "Handler": "index.handler",
           "S3Bucket": Object {
-            "Ref": "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3Bucket19CAC3FD",
+            "Ref": "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3Bucket6EF2D9FC",
           },
           "S3Key": Object {
             "Fn::Join": Array [
@@ -51,7 +51,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3VersionKeyE2983DB2",
+                          "Ref": "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3VersionKey340E88CF",
                         },
                       ],
                     },
@@ -64,7 +64,7 @@ Object {
                       "Fn::Split": Array [
                         "||",
                         Object {
-                          "Ref": "AssetParameters3d699974cde04fc954fad551b116bbefbc5410d8f4baa77e77f07df467c08d77S3VersionKeyE2983DB2",
+                          "Ref": "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3VersionKey340E88CF",
                         },
                       ],
                     },
@@ -84,7 +84,7 @@ Object {
         "RuntimeVersion": "syn-nodejs-puppeteer-3.0",
         "Schedule": Object {
           "DurationInSeconds": "300",
-          "Expression": "rate(60 minutes)",
+          "Expression": "rate(0 minutes)",
         },
         "StartCanaryAfterCreation": true,
       },
