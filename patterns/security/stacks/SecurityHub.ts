@@ -1,14 +1,18 @@
-import * as cdk from "@aws-cdk/core"
-import * as iam from "@aws-cdk/aws-iam"
-import * as securityhub from "@aws-cdk/aws-securityhub"
-import * as events from "@aws-cdk/aws-events"
-import * as targets from "@aws-cdk/aws-events-targets"
-import * as sns from "@aws-cdk/aws-sns"
+import {
+  App,
+  Stack,
+  StackProps,
+  aws_iam as iam,
+  aws_securityhub as securityhub,
+  aws_events as events,
+  aws_events_targets as events_targets,
+  aws_sns as sns,
+} from "aws-cdk-lib"
 
-export class SecurityHub extends cdk.Stack {
+export class SecurityHub extends Stack {
   public readonly topic: sns.ITopic
 
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props)
 
     new iam.CfnServiceLinkedRole(this, "ServiceLinkedRoleForSecurityHub", {
@@ -36,7 +40,7 @@ export class SecurityHub extends cdk.Stack {
         },
       },
     })
-    rule.addTarget(new targets.SnsTopic(topic))
+    rule.addTarget(new events_targets.SnsTopic(topic))
 
     this.topic = topic
   }

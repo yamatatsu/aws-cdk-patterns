@@ -1,13 +1,17 @@
-import * as cdk from "@aws-cdk/core"
-import * as lambda from "@aws-cdk/aws-lambda"
-import { NodejsFunction } from "@aws-cdk/aws-lambda-nodejs"
-import * as iam from "@aws-cdk/aws-iam"
+import {
+  App,
+  Stack,
+  StackProps,
+  aws_lambda as lambda,
+  aws_lambda_nodejs as lambda_nodejs,
+  aws_iam as iam,
+} from "aws-cdk-lib"
 
-export class LambdaInsights extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
+export class LambdaInsights extends Stack {
+  constructor(parent: App, id: string, props?: StackProps) {
     super(parent, id, props)
 
-    const fn = new NodejsFunction(this, "Lambda", {
+    const fn = new lambda_nodejs.NodejsFunction(this, "Lambda", {
       entry: "./lambda/index.ts",
       // lambda insights don't work with node14...
       runtime: lambda.Runtime.NODEJS_12_X,

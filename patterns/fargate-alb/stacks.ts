@@ -1,12 +1,16 @@
 import path from "path"
-import * as cdk from "@aws-cdk/core"
-import * as ec2 from "@aws-cdk/aws-ec2"
-import * as elb from "@aws-cdk/aws-elasticloadbalancingv2"
-import * as ecs from "@aws-cdk/aws-ecs"
-import * as iam from "@aws-cdk/aws-iam"
+import {
+  App,
+  Stack,
+  StackProps,
+  aws_ec2 as ec2,
+  aws_elasticloadbalancingv2 as elb,
+  aws_ecs as ecs,
+  aws_iam as iam,
+} from "aws-cdk-lib"
 
-export class FargateAlb extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
+export class FargateAlb extends Stack {
+  constructor(parent: App, id: string, props?: StackProps) {
     super(parent, id, props)
 
     const vpc = new ec2.Vpc(this, "Vpc", {

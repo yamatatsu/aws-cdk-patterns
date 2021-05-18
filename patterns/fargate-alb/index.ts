@@ -1,4 +1,4 @@
-import * as cdk from "@aws-cdk/core"
+import { App } from "aws-cdk-lib"
 import { STSClient, GetCallerIdentityCommand } from "@aws-sdk/client-sts"
 import { FargateAlb } from "./stacks"
 
@@ -7,7 +7,7 @@ const client = new STSClient({ region })
 client
   .send(new GetCallerIdentityCommand({}))
   .then((data) => {
-    const app = new cdk.App()
+    const app = new App()
     new FargateAlb(app, "FargateAlb", {
       stackName: "FargateAlb",
       env: { region, account: data.Account },

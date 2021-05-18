@@ -1,6 +1,6 @@
-import * as cdk from "@aws-cdk/core"
+import { App } from "aws-cdk-lib"
 import { Waf } from "./stacks"
 
-const app = new cdk.App()
+const app = new App()
 
 new Waf(app, "WafStack")

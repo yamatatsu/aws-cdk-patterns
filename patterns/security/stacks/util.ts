@@ -1,5 +1,4 @@
-import * as iam from "@aws-cdk/aws-iam"
-import * as s3 from "@aws-cdk/aws-s3"
+import { aws_iam as iam, aws_s3 as s3 } from "aws-cdk-lib"
 
 // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#s3-5-remediation
 export const addSslOnlyPolicyToBucket = (bucket: s3.IBucket) => {

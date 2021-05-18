@@ -1,9 +1,14 @@
-import * as cdk from "@aws-cdk/core"
-import * as lambda from "@aws-cdk/aws-lambda"
-import * as apigateway from "@aws-cdk/aws-apigateway"
+import {
+  App,
+  Stack,
+  StackProps,
+  RemovalPolicy,
+  aws_lambda as lambda,
+  aws_apigateway as apigateway,
+} from "aws-cdk-lib"
 
-export class ApigatewayVersioning extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
+export class ApigatewayVersioning extends Stack {
+  constructor(parent: App, id: string, props?: StackProps) {
     super(parent, id, props)
 
     const handler = new lambda.Function(this, "Lambda", {
@@ -12,7 +17,7 @@ export class ApigatewayVersioning extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_12_X,
       tracing: lambda.Tracing.ACTIVE,
       currentVersionOptions: {
-        removalPolicy: cdk.RemovalPolicy.RETAIN,
+        removalPolicy: RemovalPolicy.RETAIN,
       },
     })
 
@@ -33,7 +38,7 @@ export class ApigatewayVersioning extends cdk.Stack {
 }
 
 const genFixVersion = (
-  scope: cdk.Stack,
+  scope: Stack,
   handler: lambda.IFunction,
   restApi: apigateway.IRestApi,
 ) => (versionName: string, version: string) => {

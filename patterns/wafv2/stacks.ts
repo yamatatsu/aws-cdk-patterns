@@ -1,5 +1,4 @@
-import * as cdk from "@aws-cdk/core"
-import * as waf from "@aws-cdk/aws-wafv2"
+import { App, Stack, StackProps, aws_wafv2 as waf } from "aws-cdk-lib"
 
 const ALLOW_IP_DIC: Record<string, string[]> = {}
 const OWASP_RULE: waf.CfnWebACL.RuleProperty = {
@@ -22,8 +21,8 @@ const OWASP_RULE: waf.CfnWebACL.RuleProperty = {
   },
 }
 
-export class Waf extends cdk.Stack {
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+export class Waf extends Stack {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props)
 
     const allowIpRules: waf.CfnWebACL.RuleProperty[] = Object.entries(

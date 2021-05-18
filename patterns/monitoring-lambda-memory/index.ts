@@ -1,7 +1,7 @@
-import * as cdk from "@aws-cdk/core"
-import { ApigatewayCognito } from "./stacks"
+import { App } from "aws-cdk-lib"
+import { MonitoringLambdaMemory } from "./stacks"
 
-const app = new cdk.App()
-new ApigatewayCognito(app, "ApigatewayCognito", {
-  stackName: "ApigatewayCognito",
+const app = new App()
+new MonitoringLambdaMemory(app, "MonitoringLambdaMemory", {
+  stackName: "MonitoringLambdaMemory",
 })

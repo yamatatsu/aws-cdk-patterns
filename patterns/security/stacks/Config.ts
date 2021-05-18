@@ -1,22 +1,28 @@
-import * as cdk from "@aws-cdk/core"
-import * as config from "@aws-cdk/aws-config"
-import * as iam from "@aws-cdk/aws-iam"
-import * as s3 from "@aws-cdk/aws-s3"
-import * as sns from "@aws-cdk/aws-sns"
+import {
+  App,
+  Stack,
+  StackProps,
+  RemovalPolicy,
+  Duration,
+  aws_config as config,
+  aws_iam as iam,
+  aws_s3 as s3,
+  aws_sns as sns,
+} from "aws-cdk-lib"
 
 import { addSslOnlyPolicyToBucket } from "./util"
 
-export class Config extends cdk.Stack {
+export class Config extends Stack {
   public readonly topic: sns.ITopic
 
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props)
 
     const bucket = new s3.Bucket(this, "ConfigBucket", {
       // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#s3-4-remediation
       encryption: s3.BucketEncryption.S3_MANAGED,
       // For private AWS account
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      removalPolicy: RemovalPolicy.DESTROY,
     })
     // https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-fsbp-controls.html#s3-5-remediation
     addSslOnlyPolicyToBucket(bucket)
@@ -73,7 +79,7 @@ export class Config extends cdk.Stack {
     const accessKeysRotated = new config.AccessKeysRotated(
       this,
       "AccessKeysRotated",
-      { maxAge: cdk.Duration.days(90) },
+      { maxAge: Duration.days(90) },
     )
     accessKeysRotated.node.addDependency(configurationRecorder)
 
