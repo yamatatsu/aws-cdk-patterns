@@ -2,20 +2,6 @@
 
 exports[`snapshot test 1`] = `
 Object {
-  "Parameters": Object {
-    "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fArtifactHashD57FC119": Object {
-      "Description": "Artifact hash for asset \\"8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058f\\"",
-      "Type": "String",
-    },
-    "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3Bucket6EF2D9FC": Object {
-      "Description": "S3 bucket for asset \\"8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058f\\"",
-      "Type": "String",
-    },
-    "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3VersionKey340E88CF": Object {
-      "Description": "S3 key for asset version \\"8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058f\\"",
-      "Type": "String",
-    },
-  },
   "Resources": Object {
     "Bucket83908E77": Object {
       "DeletionPolicy": "Delete",
@@ -37,42 +23,7 @@ Object {
         },
         "Code": Object {
           "Handler": "index.handler",
-          "S3Bucket": Object {
-            "Ref": "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3Bucket6EF2D9FC",
-          },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3VersionKey340E88CF",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters8a4c894b579a0e20c7d82b381d168727d0e5059515507f057a5f99446274058fS3VersionKey340E88CF",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "Script": "dummy",
         },
         "ExecutionRoleArn": Object {
           "Fn::GetAtt": Array [

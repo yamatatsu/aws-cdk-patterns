@@ -2,8 +2,12 @@ import * as cdk from "@aws-cdk/core"
 import * as synthetics from "@aws-cdk/aws-synthetics"
 import * as s3 from "@aws-cdk/aws-s3"
 
+type Props = cdk.StackProps & {
+  code: synthetics.Code
+}
+
 export class CloudwatchSynthetics extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
+  constructor(parent: cdk.App, id: string, props: Props) {
     super(parent, id, props)
 
     const bucket = new s3.Bucket(this, "Bucket", {
@@ -21,7 +25,7 @@ export class CloudwatchSynthetics extends cdk.Stack {
       // canaryName?: string
       runtime: synthetics.Runtime.SYNTHETICS_NODEJS_PUPPETEER_3_0,
       test: synthetics.Test.custom({
-        code: synthetics.Code.fromAsset(`${__dirname}/dist`),
+        code: props.code,
         handler: "index.handler",
       }),
     })
