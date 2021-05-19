@@ -1,16 +1,22 @@
-import * as cdk from "@aws-cdk/core"
-import * as s3 from "@aws-cdk/aws-s3"
-import * as s3Deploy from "@aws-cdk/aws-s3-deployment"
-import * as cloudfront from "@aws-cdk/aws-cloudfront"
-import * as cognito from "@aws-cdk/aws-cognito"
-import * as lambda from "@aws-cdk/aws-lambda"
+import {
+  App,
+  Stack,
+  StackProps,
+  RemovalPolicy,
+  Duration,
+  aws_lambda as lambda,
+  aws_s3_deployment as s3Deploy,
+  aws_s3 as s3,
+  aws_cloudfront as cloudfront,
+  aws_cognito as cognito,
+} from "aws-cdk-lib"
 
-type Props = cdk.StackProps & {
+type Props = StackProps & {
   lambdaCode: lambda.Code
   staticContents: s3Deploy.ISource
 }
-export class PrivateCloudfrontAmplify extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props: Props) {
+export class PrivateCloudfrontAmplify extends Stack {
+  constructor(parent: App, id: string, props: Props) {
     super(parent, id, props)
 
     const userPool = new cognito.UserPool(this, "UserPool", {
@@ -48,7 +54,7 @@ export class PrivateCloudfrontAmplify extends cdk.Stack {
     )
 
     const bucket = new s3.Bucket(this, "Bucket", {
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      removalPolicy: RemovalPolicy.DESTROY,
     })
 
     new s3Deploy.BucketDeployment(this, "DeployWebsite", {
@@ -78,9 +84,9 @@ export class PrivateCloudfrontAmplify extends cdk.Stack {
             behaviors: [
               {
                 pathPattern: "auth/",
-                minTtl: cdk.Duration.seconds(0),
-                maxTtl: cdk.Duration.seconds(0),
-                defaultTtl: cdk.Duration.seconds(0),
+                minTtl: Duration.seconds(0),
+                maxTtl: Duration.seconds(0),
+                defaultTtl: Duration.seconds(0),
                 forwardedValues: { queryString: false },
                 lambdaFunctionAssociations: [
                   {
@@ -91,16 +97,16 @@ export class PrivateCloudfrontAmplify extends cdk.Stack {
               },
               {
                 pathPattern: "auth/*",
-                minTtl: cdk.Duration.seconds(0),
-                maxTtl: cdk.Duration.days(365),
-                defaultTtl: cdk.Duration.days(1),
+                minTtl: Duration.seconds(0),
+                maxTtl: Duration.days(365),
+                defaultTtl: Duration.days(1),
                 forwardedValues: { queryString: false },
               },
               {
                 pathPattern: "index.html",
-                minTtl: cdk.Duration.seconds(0),
-                maxTtl: cdk.Duration.seconds(0),
-                defaultTtl: cdk.Duration.seconds(0),
+                minTtl: Duration.seconds(0),
+                maxTtl: Duration.seconds(0),
+                defaultTtl: Duration.seconds(0),
                 forwardedValues: { queryString: false },
                 lambdaFunctionAssociations: [
                   {
@@ -111,9 +117,9 @@ export class PrivateCloudfrontAmplify extends cdk.Stack {
               },
               {
                 isDefaultBehavior: true,
-                minTtl: cdk.Duration.seconds(0),
-                maxTtl: cdk.Duration.days(365),
-                defaultTtl: cdk.Duration.days(1),
+                minTtl: Duration.seconds(0),
+                maxTtl: Duration.days(365),
+                defaultTtl: Duration.days(1),
                 forwardedValues: { queryString: false },
                 lambdaFunctionAssociations: [
                   {

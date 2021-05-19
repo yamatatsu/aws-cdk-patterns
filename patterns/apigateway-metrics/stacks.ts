@@ -1,10 +1,15 @@
-import * as cdk from "@aws-cdk/core"
-import * as lambda from "@aws-cdk/aws-lambda"
-import * as apigateway from "@aws-cdk/aws-apigateway"
-import * as cloudwatch from "@aws-cdk/aws-cloudwatch"
+import {
+  App,
+  Stack,
+  StackProps,
+  Duration,
+  aws_lambda as lambda,
+  aws_apigateway as apigateway,
+  aws_cloudwatch as cloudwatch,
+} from "aws-cdk-lib"
 
-export class ApigatewayMetrics extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
+export class ApigatewayMetrics extends Stack {
+  constructor(parent: App, id: string, props?: StackProps) {
     super(parent, id, props)
 
     const handler = new lambda.Function(this, "Lambda", {
@@ -17,19 +22,17 @@ export class ApigatewayMetrics extends cdk.Stack {
     const restApiName = "ApigatewayMetrics_RestApi"
     const restApi = new apigateway.LambdaRestApi(this, "RestApi", {
       handler,
-      options: {
-        restApiName,
-        deploy: true,
-        deployOptions: {
-          stageName: "stg",
-          variables: {
-            stageVariable: "It is value for testing stage variable.",
-          },
-          metricsEnabled: true,
-          loggingLevel: apigateway.MethodLoggingLevel.INFO,
-          dataTraceEnabled: true,
-          tracingEnabled: true,
+      restApiName,
+      deploy: true,
+      deployOptions: {
+        stageName: "stg",
+        variables: {
+          stageVariable: "It is value for testing stage variable.",
         },
+        metricsEnabled: true,
+        loggingLevel: apigateway.MethodLoggingLevel.INFO,
+        dataTraceEnabled: true,
+        tracingEnabled: true,
       },
     })
 
@@ -45,20 +48,28 @@ export class ApigatewayMetrics extends cdk.Stack {
 
     const apigateway5XXAlerm = new cloudwatch.Alarm(this, "Apigateway_5XX", {
       alarmName: "Apigateway_5XX",
-      metric: getApiMetric("5XXError"),
-      period: cdk.Duration.minutes(1),
+      metric: new cloudwatch.Metric({
+        namespace: "AWS/ApiGateway",
+        metricName: "5XXError",
+        dimensions: {
+          ApiName: restApiName,
+          Stage: restApi.deploymentStage.stageName,
+        },
+        period: Duration.minutes(1),
+        statistic: "Sum",
+      }),
       evaluationPeriods: 1,
-      statistic: "Sum",
       comparisonOperator:
         cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
       threshold: 1,
     })
     const lambdaThrottleAlerm = new cloudwatch.Alarm(this, "Lambda_Throttle", {
       alarmName: "Lambda_Throttle",
-      metric: handler.metric("Throttles"),
-      period: cdk.Duration.minutes(1),
+      metric: handler.metric("Throttles", {
+        period: Duration.minutes(1),
+        statistic: "Sum",
+      }),
       evaluationPeriods: 1,
-      statistic: "Sum",
       comparisonOperator:
         cloudwatch.ComparisonOperator.GREATER_THAN_OR_EQUAL_TO_THRESHOLD,
       threshold: 1,

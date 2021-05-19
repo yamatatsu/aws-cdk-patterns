@@ -1,5 +1,5 @@
 import * as dotenv from "dotenv"
-import * as cdk from "@aws-cdk/core"
+import { App, Environment } from "aws-cdk-lib"
 import { SecurityHub } from "./SecurityHub"
 import { CloudTrail } from "./CloudTrail"
 import { GuardDuty } from "./GuardDuty"
@@ -19,8 +19,8 @@ if (!SLACK_CHANNEL_ID) {
   throw new Error("No `process.env.SLACK_CHANNEL_ID` is set")
 }
 
-const app = new cdk.App()
-const enviroment: cdk.Environment = {
+const app = new App()
+const enviroment: Environment = {
   region: "ap-northeast-1",
 }
 

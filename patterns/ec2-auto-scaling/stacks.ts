@@ -1,11 +1,14 @@
-import * as cdk from "@aws-cdk/core"
-import * as iam from "@aws-cdk/aws-iam"
-import * as ec2 from "@aws-cdk/aws-ec2"
-import * as autoscaling from "@aws-cdk/aws-autoscaling"
-import * as elb from "@aws-cdk/aws-elasticloadbalancingv2"
+import {
+  App,
+  Stack,
+  StackProps,
+  aws_ec2 as ec2,
+  aws_autoscaling as autoscaling,
+  aws_elasticloadbalancingv2 as elb,
+} from "aws-cdk-lib"
 
-export class Ec2AutoScaling extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
+export class Ec2AutoScaling extends Stack {
+  constructor(parent: App, id: string, props?: StackProps) {
     super(parent, id, props)
 
     const vpc = new ec2.Vpc(this, "Vpc", {
@@ -59,7 +62,7 @@ export class Ec2AutoScaling extends cdk.Stack {
     })
 
     autoScalingGroup.scaleOnRequestCount("AModestLoad", {
-      targetRequestsPerSecond: 1,
+      targetRequestsPerMinute: 1,
     })
     listener.connections.allowDefaultPortFromAnyIpv4("Open to the world")
   }

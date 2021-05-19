@@ -1,9 +1,9 @@
 import { SynthUtils } from "@aws-cdk/assert"
-import * as cdk from "@aws-cdk/core"
+import { App } from "aws-cdk-lib"
 import { Cis_1_20_AwsSupportAccessRole } from "./CIS-1.20-AwsSupportAccessRole"
 
 test("snapshot test", () => {
-  const app = new cdk.App()
+  const app = new App()
 
   const target = new Cis_1_20_AwsSupportAccessRole(app, "Target")
 

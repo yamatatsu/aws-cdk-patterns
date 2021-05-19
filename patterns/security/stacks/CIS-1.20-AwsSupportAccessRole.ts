@@ -1,11 +1,10 @@
 /**
  * https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#cis-1.20-remediation
  */
-import * as cdk from "@aws-cdk/core"
-import * as iam from "@aws-cdk/aws-iam"
+import { App, Stack, StackProps, aws_iam as iam } from "aws-cdk-lib"
 
-export class Cis_1_20_AwsSupportAccessRole extends cdk.Stack {
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+export class Cis_1_20_AwsSupportAccessRole extends Stack {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props)
 
     new iam.Role(this, "Role", {

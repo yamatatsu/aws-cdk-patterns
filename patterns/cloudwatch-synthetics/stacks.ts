@@ -1,33 +1,40 @@
-import * as cdk from "@aws-cdk/core"
-import * as synthetics from "@aws-cdk/aws-synthetics"
-import * as s3 from "@aws-cdk/aws-s3"
+// FIXME: RCにはまだ synthetics が実装されていない。実装を待つ。
+// import {
+//   App,
+//   Stack,
+//   StackProps,
+//   RemovalPolicy,
+//   Duration,
+//   aws_synthetics as synthetics,
+//   aws_s3 as s3,
+// } from "aws-cdk-lib"
 
-type Props = cdk.StackProps & {
-  code: synthetics.Code
-}
+// type Props = StackProps & {
+//   code: synthetics.Code
+// }
 
-export class CloudwatchSynthetics extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props: Props) {
-    super(parent, id, props)
+// export class CloudwatchSynthetics extends Stack {
+//   constructor(parent: App, id: string, props: Props) {
+//     super(parent, id, props)
 
-    const bucket = new s3.Bucket(this, "Bucket", {
-      removalPolicy: cdk.RemovalPolicy.DESTROY,
-    })
+//     const bucket = new s3.Bucket(this, "Bucket", {
+//       removalPolicy: RemovalPolicy.DESTROY,
+//     })
 
-    new synthetics.Canary(this, "Canary", {
-      artifactsBucketLocation: { bucket },
-      // role?: iam.IRole
-      timeToLive: cdk.Duration.minutes(5),
-      schedule: synthetics.Schedule.once(),
-      // startAfterCreation?: boolean
-      // successRetentionPeriod: cdk.Duration.days(7),
-      // failureRetentionPeriod: cdk.Duration.days(0),
-      // canaryName?: string
-      runtime: synthetics.Runtime.SYNTHETICS_NODEJS_PUPPETEER_3_0,
-      test: synthetics.Test.custom({
-        code: props.code,
-        handler: "index.handler",
-      }),
-    })
-  }
-}
+//     new synthetics.Canary(this, "Canary", {
+//       artifactsBucketLocation: { bucket },
+//       // role?: iam.IRole
+//       timeToLive: Duration.minutes(5),
+//       schedule: synthetics.Schedule.once(),
+//       // startAfterCreation?: boolean
+//       // successRetentionPeriod: Duration.days(7),
+//       // failureRetentionPeriod: Duration.days(0),
+//       // canaryName?: string
+//       runtime: synthetics.Runtime.SYNTHETICS_NODEJS_PUPPETEER_3_0,
+//       test: synthetics.Test.custom({
+//         code: props.code,
+//         handler: "index.handler",
+//       }),
+//     })
+//   }
+// }

@@ -2,20 +2,6 @@
 
 exports[`snapshot test 1`] = `
 Object {
-  "Parameters": Object {
-    "AssetParameters39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739ArtifactHash6EF8504E": Object {
-      "Description": "Artifact hash for asset \\"39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739\\"",
-      "Type": "String",
-    },
-    "AssetParameters39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739S3Bucket2E08C837": Object {
-      "Description": "S3 bucket for asset \\"39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739\\"",
-      "Type": "String",
-    },
-    "AssetParameters39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739S3VersionKeyAB146374": Object {
-      "Description": "S3 key for asset version \\"39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739\\"",
-      "Type": "String",
-    },
-  },
   "Resources": Object {
     "LambdaD247545B": Object {
       "DependsOn": Array [
@@ -24,41 +10,9 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739S3Bucket2E08C837",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739S3VersionKeyAB146374",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739S3VersionKeyAB146374",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "39cf796ce36dd7e9affd17b54a2af4e147030aa83597161ff2171bbdba67d739.zip",
         },
         "Environment": Object {
           "Variables": Object {

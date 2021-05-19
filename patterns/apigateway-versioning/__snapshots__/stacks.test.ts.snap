@@ -30,22 +30,8 @@ Object {
       },
     },
   },
-  "Parameters": Object {
-    "AssetParameters231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563ArtifactHash2FD95D4C": Object {
-      "Description": "Artifact hash for asset \\"231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563\\"",
-      "Type": "String",
-    },
-    "AssetParameters231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563S3BucketC5F33318": Object {
-      "Description": "S3 bucket for asset \\"231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563\\"",
-      "Type": "String",
-    },
-    "AssetParameters231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563S3VersionKey08D37BD6": Object {
-      "Description": "S3 key for asset version \\"231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563\\"",
-      "Type": "String",
-    },
-  },
   "Resources": Object {
-    "LambdaCurrentVersionDF706F6A4d1309662039316c67f9939518ccc6e3": Object {
+    "LambdaCurrentVersionDF706F6A0726233d2e5c569f629cdc1b5542677b": Object {
       "DeletionPolicy": "Retain",
       "Properties": Object {
         "FunctionName": Object {
@@ -63,41 +49,9 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563S3BucketC5F33318",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563S3VersionKey08D37BD6",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563S3VersionKey08D37BD6",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "231a5d69f0333ffec7e2957861f38ba6ed915e66923f431068e4a252c3721563.zip",
         },
         "Handler": "index.handler",
         "Role": Object {
@@ -698,7 +652,7 @@ Object {
         },
         "FunctionVersion": Object {
           "Fn::GetAtt": Array [
-            "LambdaCurrentVersionDF706F6A4d1309662039316c67f9939518ccc6e3",
+            "LambdaCurrentVersionDF706F6A0726233d2e5c569f629cdc1b5542677b",
             "Version",
           ],
         },

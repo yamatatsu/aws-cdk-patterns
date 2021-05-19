@@ -1,13 +1,17 @@
-import * as cdk from "@aws-cdk/core"
-import * as guardduty from "@aws-cdk/aws-guardduty"
-import * as events from "@aws-cdk/aws-events"
-import * as targets from "@aws-cdk/aws-events-targets"
-import * as sns from "@aws-cdk/aws-sns"
+import {
+  App,
+  Stack,
+  StackProps,
+  aws_guardduty as guardduty,
+  aws_events as events,
+  aws_events_targets as events_targets,
+  aws_sns as sns,
+} from "aws-cdk-lib"
 
-export class GuardDuty extends cdk.Stack {
+export class GuardDuty extends Stack {
   public readonly topic: sns.ITopic
 
-  constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
+  constructor(scope: App, id: string, props?: StackProps) {
     super(scope, id, props)
 
     new guardduty.CfnDetector(this, "GuardDuty", {
@@ -24,7 +28,7 @@ export class GuardDuty extends cdk.Stack {
         detailType: ["GuardDuty Finding"],
       },
     })
-    rule.addTarget(new targets.SnsTopic(topic))
+    rule.addTarget(new events_targets.SnsTopic(topic))
 
     this.topic = topic
   }

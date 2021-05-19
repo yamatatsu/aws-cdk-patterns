@@ -1,9 +1,11 @@
-import * as cdk from "@aws-cdk/core"
-import * as lambda from "@aws-cdk/aws-lambda"
-import * as s3Deploy from "@aws-cdk/aws-s3-deployment"
+import {
+  App,
+  aws_lambda as lambda,
+  aws_s3_deployment as s3Deploy,
+} from "aws-cdk-lib"
 import { PrivateCloudfrontAmplify } from "./stacks"
 
-const app = new cdk.App()
+const app = new App()
 
 const lambdaCode = new lambda.AssetCode("./lambda/dist")
 const staticContents = s3Deploy.Source.asset("./front/build")

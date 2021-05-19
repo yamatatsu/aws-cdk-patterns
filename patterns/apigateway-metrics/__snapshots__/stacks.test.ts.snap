@@ -30,20 +30,6 @@ Object {
       },
     },
   },
-  "Parameters": Object {
-    "AssetParametersd6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6ArtifactHashB0E2AA07": Object {
-      "Description": "Artifact hash for asset \\"d6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6\\"",
-      "Type": "String",
-    },
-    "AssetParametersd6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6S3Bucket9149C89D": Object {
-      "Description": "S3 bucket for asset \\"d6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6\\"",
-      "Type": "String",
-    },
-    "AssetParametersd6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6S3VersionKey525274D8": Object {
-      "Description": "S3 key for asset version \\"d6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6\\"",
-      "Type": "String",
-    },
-  },
   "Resources": Object {
     "Apigateway5XX28B036F6": Object {
       "Properties": Object {
@@ -181,41 +167,9 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersd6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6S3Bucket9149C89D",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersd6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6S3VersionKey525274D8",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersd6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6S3VersionKey525274D8",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "d6a38b19af35037e6638da84b692a79bdf45bdd919e17df9c5ec98daf13267b6.zip",
         },
         "Handler": "index.handler",
         "Role": Object {

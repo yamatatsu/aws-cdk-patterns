@@ -1,10 +1,14 @@
-import * as cdk from "@aws-cdk/core"
-import * as lambda from "@aws-cdk/aws-lambda"
-import * as apigateway from "@aws-cdk/aws-apigateway"
-import * as cognito from "@aws-cdk/aws-cognito"
+import {
+  App,
+  Stack,
+  StackProps,
+  aws_lambda as lambda,
+  aws_apigateway as apigateway,
+  aws_cognito as cognito,
+} from "aws-cdk-lib"
 
-export class ApigatewayCognito extends cdk.Stack {
-  constructor(parent: cdk.App, id: string, props?: cdk.StackProps) {
+export class ApigatewayCognito extends Stack {
+  constructor(parent: App, id: string, props?: StackProps) {
     super(parent, id, props)
 
     const userPool = new cognito.UserPool(this, "UserPool", {

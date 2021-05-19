@@ -16,13 +16,17 @@
  *   https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-cis-controls-3.13
  *   https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html#securityhub-cis-controls-3.14
  */
-import * as cdk from "@aws-cdk/core"
-import * as cloudwatch from "@aws-cdk/aws-cloudwatch"
-import * as cloudwatchActions from "@aws-cdk/aws-cloudwatch-actions"
-import * as logs from "@aws-cdk/aws-logs"
-import * as sns from "@aws-cdk/aws-sns"
+import {
+  App,
+  Stack,
+  StackProps,
+  aws_cloudwatch as cloudwatch,
+  aws_cloudwatch_actions as cloudwatch_actions,
+  aws_logs as logs,
+  aws_sns as sns,
+} from "aws-cdk-lib"
 
-type Props = cdk.StackProps & { logGroup: logs.ILogGroup }
+type Props = StackProps & { logGroup: logs.ILogGroup }
 
 type AlermParam = {
   name: string
@@ -103,10 +107,10 @@ const alermParams: AlermParam[] = [
   },
 ]
 
-export class Cis3xAlerms extends cdk.Stack {
+export class Cis3xAlerms extends Stack {
   public readonly topics: sns.ITopic[]
 
-  constructor(scope: cdk.App, id: string, props: Props) {
+  constructor(scope: App, id: string, props: Props) {
     super(scope, id, props)
 
     const topics = alermParams.map(
@@ -135,7 +139,7 @@ export class Cis3xAlerms extends cdk.Stack {
         })
 
         const topic = new sns.Topic(this, `${alermParam.name}-Topic`)
-        const snsAction = new cloudwatchActions.SnsAction(topic)
+        const snsAction = new cloudwatch_actions.SnsAction(topic)
         alarm.addAlarmAction(snsAction)
 
         return topic

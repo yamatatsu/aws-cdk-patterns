@@ -30,20 +30,6 @@ Object {
       },
     },
   },
-  "Parameters": Object {
-    "AssetParameters1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974eaArtifactHash64A8BD9F": Object {
-      "Description": "Artifact hash for asset \\"1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974ea\\"",
-      "Type": "String",
-    },
-    "AssetParameters1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974eaS3Bucket4022BF18": Object {
-      "Description": "S3 bucket for asset \\"1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974ea\\"",
-      "Type": "String",
-    },
-    "AssetParameters1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974eaS3VersionKey8FCA703B": Object {
-      "Description": "S3 key for asset version \\"1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974ea\\"",
-      "Type": "String",
-    },
-  },
   "Resources": Object {
     "CfnAuthorizer": Object {
       "Properties": Object {
@@ -71,41 +57,9 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974eaS3Bucket4022BF18",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974eaS3VersionKey8FCA703B",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974eaS3VersionKey8FCA703B",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "1e52463ab0428b601acb2583a28c0227d11c61e13c114ca5fe818214e74974ea.zip",
         },
         "Handler": "index.handler",
         "Role": Object {

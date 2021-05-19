@@ -1,9 +1,9 @@
 import { SynthUtils } from "@aws-cdk/assert"
-import * as cdk from "@aws-cdk/core"
+import { App } from "aws-cdk-lib"
 import { SecurityHub } from "./SecurityHub"
 
 test("snapshot test", () => {
-  const app = new cdk.App()
+  const app = new App()
 
   const target = new SecurityHub(app, "Target")
 

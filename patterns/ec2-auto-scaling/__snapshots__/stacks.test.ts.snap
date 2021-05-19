@@ -215,7 +215,7 @@ Object {
               ],
             },
           },
-          "TargetValue": 60,
+          "TargetValue": 1,
         },
       },
       "Type": "AWS::AutoScaling::ScalingPolicy",

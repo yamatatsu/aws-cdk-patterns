@@ -1,15 +1,19 @@
-import * as cdk from "@aws-cdk/core"
-import * as chatbot from "@aws-cdk/aws-chatbot"
-import * as sns from "@aws-cdk/aws-sns"
+import {
+  App,
+  Stack,
+  StackProps,
+  aws_chatbot as chatbot,
+  aws_sns as sns,
+} from "aws-cdk-lib"
 
-type Props = cdk.StackProps & {
+type Props = StackProps & {
   slackWorkspaceId: string
   slackChannelId: string
   notificationTopics: sns.ITopic[]
 }
 
-export class Chatbot extends cdk.Stack {
-  constructor(scope: cdk.App, id: string, props: Props) {
+export class Chatbot extends Stack {
+  constructor(scope: App, id: string, props: Props) {
     super(scope, id, props)
 
     new chatbot.SlackChannelConfiguration(this, "SlackChannelConfiguration", {
