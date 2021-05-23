@@ -16,9 +16,15 @@ export class LambdaInsights extends Stack {
       // lambda insights don't work with node14...
       runtime: lambda.Runtime.NODEJS_12_X,
       bundling: {
-        // forceDockerBundling これは default false であるが、明示的に示す。
-        // これが true のとき、もしくは esbuild が見つからないとき(下記URL参照)にdockerを用いてビルドが行われる。
-        // https://github.com/aws/aws-cdk/blob/4c8e938e01b87636390a4f04de63bcd4dfe44cf8/packages/@aws-cdk/aws-lambda-nodejs/lib/esbuild-installation.ts#L8-L31
+        /**
+         * forceDockerBundling: これは default false であるが、下記理由により明示的に示す。
+         * これが true のとき、もしくは esbuild が見つからないとき(下記URL参照)に、
+         * NodejsFunction では docker を用いてビルドが行われる。
+         * https://github.com/aws/aws-cdk/blob/4c8e938e01b87636390a4f04de63bcd4dfe44cf8/packages/@aws-cdk/aws-lambda-nodejs/lib/esbuild-installation.ts#L8-L31
+         * dockerでビルドする場合、特に Mac M1 での実行結果と GitHub actions 上での実行結果とで、
+         * 成果物のfingerprintがズレて snapshot test が落ちてしまう。
+         * そのため、 forceDockerBundling を明示し、 package.json でも esbuild を明示的にインストールする。
+         */
         forceDockerBundling: false,
       },
     })
