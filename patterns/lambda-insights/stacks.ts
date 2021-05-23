@@ -15,6 +15,12 @@ export class LambdaInsights extends Stack {
       entry: "./lambda/index.ts",
       // lambda insights don't work with node14...
       runtime: lambda.Runtime.NODEJS_12_X,
+      bundling: {
+        // forceDockerBundling これは default false であるが、明示的に示す。
+        // これが true のとき、もしくは esbuild が見つからないとき(下記URL参照)にdockerを用いてビルドが行われる。
+        // https://github.com/aws/aws-cdk/blob/4c8e938e01b87636390a4f04de63bcd4dfe44cf8/packages/@aws-cdk/aws-lambda-nodejs/lib/esbuild-installation.ts#L8-L31
+        forceDockerBundling: false,
+      },
     })
     fn.role?.addManagedPolicy(
       iam.ManagedPolicy.fromAwsManagedPolicyName(
