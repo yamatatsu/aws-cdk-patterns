@@ -41,7 +41,7 @@ export class PrivateCloudfrontAmplify extends Stack {
     const authCheckLambda = new lambda.Function(this, "signInRedirectTarget", {
       handler: "index.authCheck",
       code: props.lambdaCode,
-      runtime: lambda.Runtime.NODEJS_12_X,
+      runtime: lambda.Runtime.NODEJS_14_X,
     })
     const rewriteToIndexHtmlLambda = new lambda.Function(
       this,
@@ -49,7 +49,7 @@ export class PrivateCloudfrontAmplify extends Stack {
       {
         handler: "index.rewriteToIndexHtml",
         code: props.lambdaCode,
-        runtime: lambda.Runtime.NODEJS_12_X,
+        runtime: lambda.Runtime.NODEJS_14_X,
       },
     )
 

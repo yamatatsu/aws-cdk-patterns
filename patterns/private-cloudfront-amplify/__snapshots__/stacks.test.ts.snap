@@ -107,7 +107,7 @@ Object {
                 Object {
                   "EventType": "origin-request",
                   "LambdaFunctionARN": Object {
-                    "Ref": "rewriteToIndexHtmlCurrentVersionC616423325f164d84818181e3489f9e58f129781",
+                    "Ref": "rewriteToIndexHtmlCurrentVersionC61642336e9b33d60cf6fe3dcf91aeb44ac3b456",
                   },
                 },
               ],
@@ -155,7 +155,7 @@ Object {
                 Object {
                   "EventType": "viewer-request",
                   "LambdaFunctionARN": Object {
-                    "Ref": "signInRedirectTargetCurrentVersionE9254347c683ff9b98c8667453087109912abcc9",
+                    "Ref": "signInRedirectTargetCurrentVersionE9254347bcaa8f68a5f124cff566fed2e0f50b4f",
                   },
                 },
               ],
@@ -184,13 +184,13 @@ Object {
               Object {
                 "EventType": "viewer-request",
                 "LambdaFunctionARN": Object {
-                  "Ref": "signInRedirectTargetCurrentVersionE9254347c683ff9b98c8667453087109912abcc9",
+                  "Ref": "signInRedirectTargetCurrentVersionE9254347bcaa8f68a5f124cff566fed2e0f50b4f",
                 },
               },
               Object {
                 "EventType": "origin-request",
                 "LambdaFunctionARN": Object {
-                  "Ref": "rewriteToIndexHtmlCurrentVersionC616423325f164d84818181e3489f9e58f129781",
+                  "Ref": "rewriteToIndexHtmlCurrentVersionC61642336e9b33d60cf6fe3dcf91aeb44ac3b456",
                 },
               },
             ],
@@ -530,11 +530,11 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs14.x",
       },
       "Type": "AWS::Lambda::Function",
     },
-    "rewriteToIndexHtmlCurrentVersionC616423325f164d84818181e3489f9e58f129781": Object {
+    "rewriteToIndexHtmlCurrentVersionC61642336e9b33d60cf6fe3dcf91aeb44ac3b456": Object {
       "Properties": Object {
         "FunctionName": Object {
           "Ref": "rewriteToIndexHtmlAE7C7EF2",
@@ -598,11 +598,11 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs14.x",
       },
       "Type": "AWS::Lambda::Function",
     },
-    "signInRedirectTargetCurrentVersionE9254347c683ff9b98c8667453087109912abcc9": Object {
+    "signInRedirectTargetCurrentVersionE9254347bcaa8f68a5f124cff566fed2e0f50b4f": Object {
       "Properties": Object {
         "FunctionName": Object {
           "Ref": "signInRedirectTargetB55EDF31",

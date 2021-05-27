@@ -49,7 +49,7 @@ export class ApigatewayCognito extends Stack {
     const handler = new lambda.Function(this, "Lambda", {
       code: new lambda.AssetCode("./lambda"),
       handler: "index.handler",
-      runtime: lambda.Runtime.NODEJS_12_X,
+      runtime: lambda.Runtime.NODEJS_14_X,
     })
 
     const restApi = new apigateway.RestApi(this, "RestApi", {

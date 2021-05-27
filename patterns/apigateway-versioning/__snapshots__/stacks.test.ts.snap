@@ -31,7 +31,7 @@ Object {
     },
   },
   "Resources": Object {
-    "LambdaCurrentVersionDF706F6A0726233d2e5c569f629cdc1b5542677b": Object {
+    "LambdaCurrentVersionDF706F6Ad56a08fca92cea151a0f7f75c736be51": Object {
       "DeletionPolicy": "Retain",
       "Properties": Object {
         "FunctionName": Object {
@@ -60,7 +60,7 @@ Object {
             "Arn",
           ],
         },
-        "Runtime": "nodejs12.x",
+        "Runtime": "nodejs14.x",
         "TracingConfig": Object {
           "Mode": "Active",
         },
@@ -652,7 +652,7 @@ Object {
         },
         "FunctionVersion": Object {
           "Fn::GetAtt": Array [
-            "LambdaCurrentVersionDF706F6A0726233d2e5c569f629cdc1b5542677b",
+            "LambdaCurrentVersionDF706F6Ad56a08fca92cea151a0f7f75c736be51",
             "Version",
           ],
         },

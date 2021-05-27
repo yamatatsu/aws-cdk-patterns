@@ -14,7 +14,7 @@ export class ApigatewayVersioning extends Stack {
     const handler = new lambda.Function(this, "Lambda", {
       code: new lambda.AssetCode("./lambda"),
       handler: "index.handler",
-      runtime: lambda.Runtime.NODEJS_12_X,
+      runtime: lambda.Runtime.NODEJS_14_X,
       tracing: lambda.Tracing.ACTIVE,
       currentVersionOptions: {
         removalPolicy: RemovalPolicy.RETAIN,
@@ -37,20 +37,18 @@ export class ApigatewayVersioning extends Stack {
   }
 }
 
-const genFixVersion = (
-  scope: Stack,
-  handler: lambda.IFunction,
-  restApi: apigateway.IRestApi,
-) => (versionName: string, version: string) => {
-  const _versionName = versionName.replace(/\./g, "_")
+const genFixVersion =
+  (scope: Stack, handler: lambda.IFunction, restApi: apigateway.IRestApi) =>
+  (versionName: string, version: string) => {
+    const _versionName = versionName.replace(/\./g, "_")
 
-  const alias = lambda.Version.fromVersionAttributes(
-    scope,
-    `lambdaVersion_${_versionName}`,
-    { lambda: handler, version },
-  ).addAlias(_versionName)
+    const alias = lambda.Version.fromVersionAttributes(
+      scope,
+      `lambdaVersion_${_versionName}`,
+      { lambda: handler, version },
+    ).addAlias(_versionName)
 
-  restApi.root.addResource(versionName).addProxy({
-    defaultIntegration: new apigateway.LambdaIntegration(alias),
-  })
-}
+    restApi.root.addResource(versionName).addProxy({
+      defaultIntegration: new apigateway.LambdaIntegration(alias),
+    })
+  }

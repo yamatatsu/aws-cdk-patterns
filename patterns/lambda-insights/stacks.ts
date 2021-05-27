@@ -14,7 +14,7 @@ export class LambdaInsights extends Stack {
     const fn = new lambda_nodejs.NodejsFunction(this, "Lambda", {
       entry: "./lambda/index.ts",
       // lambda insights don't work with node14...
-      runtime: lambda.Runtime.NODEJS_12_X,
+      runtime: lambda.Runtime.NODEJS_14_X,
       bundling: {
         /**
          * forceDockerBundling: これは default false であるが、下記理由により明示的に示す。

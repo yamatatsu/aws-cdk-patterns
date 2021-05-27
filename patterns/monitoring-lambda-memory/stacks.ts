@@ -30,7 +30,7 @@ exports.handler = async (event) => {
       functionName: "MonitoringLambda",
       code: lambda.Code.fromAsset(`${__dirname}/lambda`),
       handler: "index.handler",
-      runtime: lambda.Runtime.NODEJS_12_X,
+      runtime: lambda.Runtime.NODEJS_14_X,
       timeout: Duration.seconds(3),
       memorySize: 128,
       initialPolicy: [
