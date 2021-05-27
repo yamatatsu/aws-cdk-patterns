@@ -15,7 +15,7 @@
   "dependencies": {
     "@docusaurus/core": "2.0.0-beta.0",
     "@docusaurus/preset-classic": "2.0.0-beta.0",
-    "aws-amplify": "4.0.2",
+    "aws-amplify": "4.0.3",
     "aws-amplify-react": "5.0.0",
     "classnames": "2.3.1",
     "react": "17.0.2",
