@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "@aws-cdk/assert": "^2.0.0-rc.4",
+    "@types/aws-lambda": "^8.10.75",
     "aws-cdk": "^2.0.0-rc.4",
     "aws-cdk-lib": "^2.0.0-rc.4",
     "constructs": "^10.0.0",
-    "@types/aws-lambda": "^8.10.75",
     "esbuild": "^0.12.1",
     "jest": "^27.0.0",
     "ts-jest": "^27.0.0",
