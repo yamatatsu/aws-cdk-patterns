@@ -5,3 +5,12 @@ cdk.out
 .DS_Store
 dist
 .cache
+
+# yarn v2
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
