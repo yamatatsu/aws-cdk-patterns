@@ -12,7 +12,7 @@ test("snapshot test", () => {
 
   const staticContents = s3Deploy.Source.asset("./dummy-for-test")
   const target = new PrivateCloudfrontAmplify(app, "Target", {
-    lambdaEntry: path.resolve(__dirname, "dummy-for-test"),
+    lambdaEntry: path.resolve(__dirname, "dummy-for-test/dummy.js"),
     staticContents,
   })
 

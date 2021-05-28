@@ -107,7 +107,7 @@ Object {
                 Object {
                   "EventType": "origin-request",
                   "LambdaFunctionARN": Object {
-                    "Ref": "rewriteToIndexHtmlCurrentVersionC61642335b33f45fd075ef5a200870fd572be239",
+                    "Ref": "rewriteToIndexHtmlCurrentVersionC61642331c20c6888cc875fd563a0f21e9ac8363",
                   },
                 },
               ],
@@ -155,7 +155,7 @@ Object {
                 Object {
                   "EventType": "viewer-request",
                   "LambdaFunctionARN": Object {
-                    "Ref": "signInRedirectTargetCurrentVersionE9254347d653646e41250169966e9cb86d93e102",
+                    "Ref": "signInRedirectTargetCurrentVersionE925434783542b6b7714de7b245fd3785ef2c222",
                   },
                 },
               ],
@@ -184,13 +184,13 @@ Object {
               Object {
                 "EventType": "viewer-request",
                 "LambdaFunctionARN": Object {
-                  "Ref": "signInRedirectTargetCurrentVersionE9254347d653646e41250169966e9cb86d93e102",
+                  "Ref": "signInRedirectTargetCurrentVersionE925434783542b6b7714de7b245fd3785ef2c222",
                 },
               },
               Object {
                 "EventType": "origin-request",
                 "LambdaFunctionARN": Object {
-                  "Ref": "rewriteToIndexHtmlCurrentVersionC61642335b33f45fd075ef5a200870fd572be239",
+                  "Ref": "rewriteToIndexHtmlCurrentVersionC61642331c20c6888cc875fd563a0f21e9ac8363",
                 },
               },
             ],
@@ -512,7 +512,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "d660e5ed94cbb0f275d6292c1803d0fa68101eaece9482ef3e8fa9e5120e76e5.zip",
+          "S3Key": "7ecc77636deefb31954ea2e6aadf6d2c361a2943535a678d65f46a8de5e1f503.zip",
         },
         "Handler": "index.rewriteToIndexHtml",
         "Role": Object {
@@ -525,7 +525,7 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "rewriteToIndexHtmlCurrentVersionC61642335b33f45fd075ef5a200870fd572be239": Object {
+    "rewriteToIndexHtmlCurrentVersionC61642331c20c6888cc875fd563a0f21e9ac8363": Object {
       "Properties": Object {
         "FunctionName": Object {
           "Ref": "rewriteToIndexHtmlAE7C7EF2",
@@ -580,7 +580,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "d660e5ed94cbb0f275d6292c1803d0fa68101eaece9482ef3e8fa9e5120e76e5.zip",
+          "S3Key": "7ecc77636deefb31954ea2e6aadf6d2c361a2943535a678d65f46a8de5e1f503.zip",
         },
         "Handler": "index.authCheck",
         "Role": Object {
@@ -593,7 +593,7 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "signInRedirectTargetCurrentVersionE9254347d653646e41250169966e9cb86d93e102": Object {
+    "signInRedirectTargetCurrentVersionE925434783542b6b7714de7b245fd3785ef2c222": Object {
       "Properties": Object {
         "FunctionName": Object {
           "Ref": "signInRedirectTargetB55EDF31",

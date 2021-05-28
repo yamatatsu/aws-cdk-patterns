@@ -43,7 +43,7 @@ export class PrivateCloudfrontAmplify extends Stack {
         "signInRedirectTarget",
         {
           handler: "authCheck",
-          entry: path.resolve(__dirname, "lambda/src/index.ts"),
+          entry: props.lambdaEntry,
           runtime: lambda.Runtime.NODEJS_14_X,
         },
       ).currentVersion,
@@ -55,7 +55,7 @@ export class PrivateCloudfrontAmplify extends Stack {
         "rewriteToIndexHtml",
         {
           handler: "rewriteToIndexHtml",
-          entry: path.resolve(__dirname, "lambda/src/index.ts"),
+          entry: props.lambdaEntry,
           runtime: lambda.Runtime.NODEJS_14_X,
         },
       ).currentVersion,
