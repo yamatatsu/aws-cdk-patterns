@@ -8,8 +8,7 @@
     "patterns/*"
   ],
   "scripts": {
-    "test": "lerna run --stream test",
-    "ci": "lerna run --stream test"
+    "test": "lerna run --stream test"
   },
   "devDependencies": {
     "lerna": "4.0.0",
