@@ -9,8 +9,7 @@
   ],
   "scripts": {
     "test": "lerna run --stream test",
-    "type-check": "lerna run --stream type-check",
-    "ci": "run-p -ln test type-check"
+    "ci": "lerna run --stream test"
   },
   "devDependencies": {
     "lerna": "4.0.0",
