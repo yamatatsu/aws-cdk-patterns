@@ -12,7 +12,7 @@ export const redirectResponse = (domainName: string) => ({
 })
 
 export function getIdToken(headers: CloudFrontHeaders, clientId: string) {
-  if (!headers["cookie"]) return
+  if (!headers["cookie"]) return ""
 
   const keyPrefix = `CognitoIdentityServiceProvider.${clientId}`
 

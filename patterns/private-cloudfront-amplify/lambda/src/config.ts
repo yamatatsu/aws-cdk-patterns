@@ -4,6 +4,6 @@
  *
  * secret managerとかから読んだ方がエレガントかと思う。
  */
-export const CLIENT_ID = "cognitoのクライアントID"
+export const CLIENT_ID = "5shu3njkti9l1qn9pn2i3toir5"
 export const TOKEN_ISSUER =
-  "https://cognito-idp.us-east-1.amazonaws.com/cognitoのuser_pool_id"
+  "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_IAuUgZqK9"

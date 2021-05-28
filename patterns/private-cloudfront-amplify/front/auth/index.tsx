@@ -8,10 +8,10 @@ const isDev = process.env.NODE_ENV === "development"
 
 Auth.configure({
   region: "us-east-1",
-  userPoolId: "us-east-1_dlaYaRVxq",
-  userPoolWebClientId: "6v6nivfgvpmrca71v7obigggjm",
+  userPoolId: "us-east-1_IAuUgZqK9",
+  userPoolWebClientId: "5shu3njkti9l1qn9pn2i3toir5",
   cookieStorage: {
-    domain: isDev ? "localhost" : "d2e3oabn6p0qhu.cloudfront.net",
+    domain: isDev ? "localhost" : "d15sryg89iethd.cloudfront.net",
     path: "/",
     expires: 365,
     secure: !isDev,

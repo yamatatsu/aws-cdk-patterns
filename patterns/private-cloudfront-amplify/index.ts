@@ -8,7 +8,7 @@ import { PrivateCloudfrontAmplify } from "./stacks"
 const app = new App()
 
 const lambdaCode = new lambda.AssetCode("./lambda/dist")
-const staticContents = s3Deploy.Source.asset("./front/build")
+const staticContents = s3Deploy.Source.asset("./front/dist")
 new PrivateCloudfrontAmplify(app, "PrivateCloudfrontAmplify", {
   stackName: "PrivateCloudfrontAmplify",
   lambdaCode,

@@ -1,3 +1,4 @@
+import path from "path"
 import {
   App,
   Stack,
@@ -5,6 +6,7 @@ import {
   RemovalPolicy,
   Duration,
   aws_lambda as lambda,
+  aws_lambda_nodejs,
   aws_s3_deployment as s3Deploy,
   aws_s3 as s3,
   aws_cloudfront as cloudfront,
@@ -33,25 +35,35 @@ export class PrivateCloudfrontAmplify extends Stack {
       userPool,
       authFlows: { userPassword: true },
     })
-    new cognito.UserPoolDomain(this, "UserPoolDomain", {
-      userPool,
-      cognitoDomain: { domainPrefix: "private-cloudfront-amplify" },
-    })
+    // new cognito.UserPoolDomain(this, "UserPoolDomain", {
+    //   userPool,
+    //   cognitoDomain: { domainPrefix: "private-cloudfront-amplify" },
+    // })
 
-    const authCheckLambda = new lambda.Function(this, "signInRedirectTarget", {
-      handler: "index.authCheck",
-      code: props.lambdaCode,
-      runtime: lambda.Runtime.NODEJS_14_X,
-    })
-    const rewriteToIndexHtmlLambda = new lambda.Function(
-      this,
-      "rewriteToIndexHtml",
-      {
-        handler: "index.rewriteToIndexHtml",
-        code: props.lambdaCode,
-        runtime: lambda.Runtime.NODEJS_14_X,
-      },
-    )
+    const authCheckLambda = {
+      eventType: cloudfront.LambdaEdgeEventType.VIEWER_REQUEST,
+      lambdaFunction: new aws_lambda_nodejs.NodejsFunction(
+        this,
+        "signInRedirectTarget",
+        {
+          handler: "authCheck",
+          entry: path.resolve(__dirname, "lambda/src/index.ts"),
+          runtime: lambda.Runtime.NODEJS_14_X,
+        },
+      ).currentVersion,
+    }
+    const rewriteLambda = {
+      eventType: cloudfront.LambdaEdgeEventType.ORIGIN_REQUEST,
+      lambdaFunction: new aws_lambda_nodejs.NodejsFunction(
+        this,
+        "rewriteToIndexHtml",
+        {
+          handler: "rewriteToIndexHtml",
+          entry: path.resolve(__dirname, "lambda/src/index.ts"),
+          runtime: lambda.Runtime.NODEJS_14_X,
+        },
+      ).currentVersion,
+    }
 
     const bucket = new s3.Bucket(this, "Bucket", {
       removalPolicy: RemovalPolicy.DESTROY,
@@ -73,6 +85,7 @@ export class PrivateCloudfrontAmplify extends Stack {
       this,
       "CloudFrontWebDistribution",
       {
+        priceClass: cloudfront.PriceClass.PRICE_CLASS_200,
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         httpVersion: cloudfront.HttpVersion.HTTP2,
         originConfigs: [
@@ -88,12 +101,14 @@ export class PrivateCloudfrontAmplify extends Stack {
                 maxTtl: Duration.seconds(0),
                 defaultTtl: Duration.seconds(0),
                 forwardedValues: { queryString: false },
-                lambdaFunctionAssociations: [
-                  {
-                    eventType: cloudfront.LambdaEdgeEventType.ORIGIN_REQUEST,
-                    lambdaFunction: rewriteToIndexHtmlLambda.currentVersion,
-                  },
-                ],
+                lambdaFunctionAssociations: [rewriteLambda],
+              },
+              {
+                pathPattern: "auth/index.html",
+                minTtl: Duration.seconds(0),
+                maxTtl: Duration.seconds(0),
+                defaultTtl: Duration.seconds(0),
+                forwardedValues: { queryString: false },
               },
               {
                 pathPattern: "auth/*",
@@ -108,12 +123,7 @@ export class PrivateCloudfrontAmplify extends Stack {
                 maxTtl: Duration.seconds(0),
                 defaultTtl: Duration.seconds(0),
                 forwardedValues: { queryString: false },
-                lambdaFunctionAssociations: [
-                  {
-                    eventType: cloudfront.LambdaEdgeEventType.VIEWER_REQUEST,
-                    lambdaFunction: authCheckLambda.currentVersion,
-                  },
-                ],
+                lambdaFunctionAssociations: [authCheckLambda],
               },
               {
                 isDefaultBehavior: true,
@@ -121,16 +131,7 @@ export class PrivateCloudfrontAmplify extends Stack {
                 maxTtl: Duration.days(365),
                 defaultTtl: Duration.days(1),
                 forwardedValues: { queryString: false },
-                lambdaFunctionAssociations: [
-                  {
-                    eventType: cloudfront.LambdaEdgeEventType.VIEWER_REQUEST,
-                    lambdaFunction: authCheckLambda.currentVersion,
-                  },
-                  {
-                    eventType: cloudfront.LambdaEdgeEventType.ORIGIN_REQUEST,
-                    lambdaFunction: rewriteToIndexHtmlLambda.currentVersion,
-                  },
-                ],
+                lambdaFunctionAssociations: [authCheckLambda, rewriteLambda],
               },
             ],
           },

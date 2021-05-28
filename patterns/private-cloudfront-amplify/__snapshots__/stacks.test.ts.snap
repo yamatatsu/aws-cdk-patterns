@@ -107,7 +107,7 @@ Object {
                 Object {
                   "EventType": "origin-request",
                   "LambdaFunctionARN": Object {
-                    "Ref": "rewriteToIndexHtmlCurrentVersionC61642336e9b33d60cf6fe3dcf91aeb44ac3b456",
+                    "Ref": "rewriteToIndexHtmlCurrentVersionC61642335b33f45fd075ef5a200870fd572be239",
                   },
                 },
               ],
@@ -155,7 +155,7 @@ Object {
                 Object {
                   "EventType": "viewer-request",
                   "LambdaFunctionARN": Object {
-                    "Ref": "signInRedirectTargetCurrentVersionE9254347bcaa8f68a5f124cff566fed2e0f50b4f",
+                    "Ref": "signInRedirectTargetCurrentVersionE9254347d653646e41250169966e9cb86d93e102",
                   },
                 },
               ],
@@ -184,13 +184,13 @@ Object {
               Object {
                 "EventType": "viewer-request",
                 "LambdaFunctionARN": Object {
-                  "Ref": "signInRedirectTargetCurrentVersionE9254347bcaa8f68a5f124cff566fed2e0f50b4f",
+                  "Ref": "signInRedirectTargetCurrentVersionE9254347d653646e41250169966e9cb86d93e102",
                 },
               },
               Object {
                 "EventType": "origin-request",
                 "LambdaFunctionARN": Object {
-                  "Ref": "rewriteToIndexHtmlCurrentVersionC61642336e9b33d60cf6fe3dcf91aeb44ac3b456",
+                  "Ref": "rewriteToIndexHtmlCurrentVersionC61642335b33f45fd075ef5a200870fd572be239",
                 },
               },
             ],
@@ -229,7 +229,7 @@ Object {
               },
             },
           ],
-          "PriceClass": "PriceClass_100",
+          "PriceClass": "PriceClass_200",
           "ViewerCertificate": Object {
             "CloudFrontDefaultCertificate": true,
           },
@@ -503,15 +503,6 @@ Object {
       },
       "Type": "AWS::Cognito::UserPoolClient",
     },
-    "UserPoolDomain5479B217": Object {
-      "Properties": Object {
-        "Domain": "private-cloudfront-amplify",
-        "UserPoolId": Object {
-          "Ref": "UserPool6BA7E5F2",
-        },
-      },
-      "Type": "AWS::Cognito::UserPoolDomain",
-    },
     "rewriteToIndexHtmlAE7C7EF2": Object {
       "DependsOn": Array [
         "rewriteToIndexHtmlServiceRoleBBBA1097",
@@ -521,7 +512,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "6ef8d0346294e3b746603914f6476f22a8b4de266ad76a93260877323dc0df85.zip",
+          "S3Key": "d660e5ed94cbb0f275d6292c1803d0fa68101eaece9482ef3e8fa9e5120e76e5.zip",
         },
         "Handler": "index.rewriteToIndexHtml",
         "Role": Object {
@@ -534,7 +525,7 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "rewriteToIndexHtmlCurrentVersionC61642336e9b33d60cf6fe3dcf91aeb44ac3b456": Object {
+    "rewriteToIndexHtmlCurrentVersionC61642335b33f45fd075ef5a200870fd572be239": Object {
       "Properties": Object {
         "FunctionName": Object {
           "Ref": "rewriteToIndexHtmlAE7C7EF2",
@@ -589,7 +580,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "6ef8d0346294e3b746603914f6476f22a8b4de266ad76a93260877323dc0df85.zip",
+          "S3Key": "d660e5ed94cbb0f275d6292c1803d0fa68101eaece9482ef3e8fa9e5120e76e5.zip",
         },
         "Handler": "index.authCheck",
         "Role": Object {
@@ -602,7 +593,7 @@ Object {
       },
       "Type": "AWS::Lambda::Function",
     },
-    "signInRedirectTargetCurrentVersionE9254347bcaa8f68a5f124cff566fed2e0f50b4f": Object {
+    "signInRedirectTargetCurrentVersionE9254347d653646e41250169966e9cb86d93e102": Object {
       "Properties": Object {
         "FunctionName": Object {
           "Ref": "signInRedirectTargetB55EDF31",

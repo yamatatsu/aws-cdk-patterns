@@ -3,21 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "docusaurus start",
-    "start-auth": "parcel start auth/index.html",
-    "prebuild:auth": "rm -rf build/auth/*",
-    "build": "yarn build:docusaurus && yarn build:auth",
-    "build:auth": "parcel build auth/index.html --public-url ./ --out-dir build/auth",
-    "build:docusaurus": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy"
+    "start": "parcel start auth/index.html",
+    "prebuild": "rm -rf dist",
+    "build": "yarn build:auth && yarn build:public",
+    "build:auth": "parcel build auth/index.html --public-url ./ --out-dir dist/auth",
+    "build:public": "cp -r public/ dist/"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.0",
-    "@docusaurus/preset-classic": "2.0.0-beta.0",
     "aws-amplify": "4.0.3",
-    "aws-amplify-react": "5.0.0",
-    "classnames": "2.3.1",
+    "aws-amplify-react": "4.x.x",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
@@ -25,17 +19,5 @@
     "@types/react": "17.0.8",
     "@types/react-dom": "17.0.5",
     "parcel": "1.12.4"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

@@ -1,1 +1,1 @@
-{ "app": "dotenv yarn ts-node index.ts" }
+{ "app": "yarn ts-node index.ts" }
