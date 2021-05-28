@@ -35,10 +35,6 @@ export class PrivateCloudfrontAmplify extends Stack {
       userPool,
       authFlows: { userPassword: true },
     })
-    // new cognito.UserPoolDomain(this, "UserPoolDomain", {
-    //   userPool,
-    //   cognitoDomain: { domainPrefix: "private-cloudfront-amplify" },
-    // })
 
     const authCheckLambda = {
       eventType: cloudfront.LambdaEdgeEventType.VIEWER_REQUEST,
@@ -102,13 +98,6 @@ export class PrivateCloudfrontAmplify extends Stack {
                 defaultTtl: Duration.seconds(0),
                 forwardedValues: { queryString: false },
                 lambdaFunctionAssociations: [rewriteLambda],
-              },
-              {
-                pathPattern: "auth/index.html",
-                minTtl: Duration.seconds(0),
-                maxTtl: Duration.seconds(0),
-                defaultTtl: Duration.seconds(0),
-                forwardedValues: { queryString: false },
               },
               {
                 pathPattern: "auth/*",
