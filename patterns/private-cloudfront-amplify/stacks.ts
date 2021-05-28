@@ -14,7 +14,7 @@ import {
 } from "aws-cdk-lib"
 
 type Props = StackProps & {
-  lambdaCode: lambda.Code
+  lambdaEntry: string
   staticContents: s3Deploy.ISource
 }
 export class PrivateCloudfrontAmplify extends Stack {

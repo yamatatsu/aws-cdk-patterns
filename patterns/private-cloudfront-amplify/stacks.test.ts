@@ -1,3 +1,4 @@
+import path from "path"
 import { SynthUtils } from "@aws-cdk/assert"
 import {
   App,
@@ -9,10 +10,9 @@ import { PrivateCloudfrontAmplify } from "./stacks"
 test("snapshot test", () => {
   const app = new App()
 
-  const lambdaCode = new lambda.AssetCode("./dummy-for-test")
   const staticContents = s3Deploy.Source.asset("./dummy-for-test")
   const target = new PrivateCloudfrontAmplify(app, "Target", {
-    lambdaCode,
+    lambdaEntry: path.resolve(__dirname, "dummy-for-test"),
     staticContents,
   })
 
