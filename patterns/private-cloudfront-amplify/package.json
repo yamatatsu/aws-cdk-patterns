@@ -20,9 +20,8 @@
     "constructs": "^10.0.0",
     "esbuild": "^0.12.4",
     "esbuild-register": "2.5.0",
-    "jest": "^27.0.0",
-    "jest-circus": "^27.0.0",
-    "ts-jest": "^27.0.0",
+    "jest": "^26.0.0",
+    "ts-jest": "^26.0.0",
     "typescript": "^4.1.3"
   }
 }
