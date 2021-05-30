@@ -1,1 +1,1 @@
-{ "app": "ts-node stacks/index.ts" }
+{ "app": "node -r esbuild-register stacks/index.ts" }
