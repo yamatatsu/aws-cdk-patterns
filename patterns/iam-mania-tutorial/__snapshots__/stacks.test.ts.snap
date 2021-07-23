@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test 1`] = `
+Object {
+  "Resources": Object {
+    "GroupC77FDACD": Object {
+      "Properties": Object {
+        "GroupName": "ViewOnlyUsers",
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/ReadOnlyAccess",
+              ],
+            ],
+          },
+          Object {
+            "Ref": "ManagedPolicy7BAB786E",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Group",
+    },
+    "ManagedPolicy7BAB786E": Object {
+      "Properties": Object {
+        "Description": "",
+        "ManagedPolicyName": "IPAddressRestriction",
+        "Path": "/",
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "*",
+              "Condition": Object {
+                "NotIpAddress": Object {
+                  "aws:SourceIp": Array [
+                    "8.8.8.8/32",
+                  ],
+                },
+              },
+              "Effect": "Deny",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::ManagedPolicy",
+    },
+    "Role1ABCC5F0": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::GetAtt": Array [
+                    "User00B015A1",
+                    "Arn",
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/AdministratorAccess",
+              ],
+            ],
+          },
+        ],
+        "RoleName": "SwitchRoleForTest01",
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "User00B015A1": Object {
+      "Properties": Object {
+        "Groups": Array [
+          Object {
+            "Ref": "GroupC77FDACD",
+          },
+        ],
+        "UserName": "test-user01",
+      },
+      "Type": "AWS::IAM::User",
+    },
+  },
+}
+`;
