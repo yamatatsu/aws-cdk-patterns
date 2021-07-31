@@ -1,5 +1,5 @@
 # M1上で docker buildするとarm最適化されたimageが落ちてきてしまい、ECS上で起動できない
-FROM node:lts-alpine3.13@sha256:502cb0fa935ce97d0f72a816bbe31b54fcc1d70e9fc28b858c8f10d653177d0c
+FROM node:lts-alpine3.13@sha256:827464075192dd324a0460429c48baa6d9b4589db7d3bb3bd57921471e8b3a62
 
 WORKDIR /home
 
