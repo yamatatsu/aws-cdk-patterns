@@ -1,0 +1,1 @@
+{ "app": "node -r esbuild-register index.ts" }
