@@ -33,7 +33,8 @@ export class IamManiaSolo extends Stack {
       ],
     })
 
-    const soloUserName = this.node.tryGetContext("soloUserName")
+    const soloUserName: string =
+      this.node.tryGetContext("soloUserName") ?? "dummy"
     const user = aws_iam.User.fromUserName(this, "SoloUser", soloUserName)
 
     user.addToGroup(adminGroup)

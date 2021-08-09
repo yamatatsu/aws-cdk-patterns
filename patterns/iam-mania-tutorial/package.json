@@ -11,10 +11,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@aws-cdk/assert": "^2.0.0-rc.4",
-    "aws-cdk": "^2.0.0-rc.4",
-    "aws-cdk-lib": "^2.0.0-rc.4",
-    "constructs": "^10.0.0",
+    "@aws-cdk/assert": "2.0.0-rc.16",
+    "aws-cdk": "2.0.0-rc.16",
+    "aws-cdk-lib": "2.0.0-rc.16",
+    "constructs": "10.0.5",
     "esbuild-register": "2.5.0",
     "jest": "^26.0.0",
     "ts-jest": "^26.0.0",

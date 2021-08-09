@@ -35,9 +35,19 @@ Object {
               "Effect": "Allow",
               "Principal": Object {
                 "AWS": Object {
-                  "Fn::GetAtt": Array [
-                    "AdminGroupCD52047A",
-                    "Arn",
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "arn:",
+                      Object {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":iam::",
+                      Object {
+                        "Ref": "AWS::AccountId",
+                      },
+                      ":user/dummy",
+                    ],
                   ],
                 },
               },
@@ -93,6 +103,17 @@ Object {
         },
       },
       "Type": "AWS::IAM::ManagedPolicy",
+    },
+    "dummyGroup0": Object {
+      "Properties": Object {
+        "GroupName": Object {
+          "Ref": "AdminGroupCD52047A",
+        },
+        "Users": Array [
+          "dummy",
+        ],
+      },
+      "Type": "AWS::IAM::UserToGroupAddition",
     },
   },
 }
