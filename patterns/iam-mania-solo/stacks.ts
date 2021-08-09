@@ -33,9 +33,14 @@ export class IamManiaSolo extends Stack {
       ],
     })
 
+    const soloUserName = this.node.tryGetContext("soloUserName")
+    const user = aws_iam.User.fromUserName(this, "SoloUser", soloUserName)
+
+    user.addToGroup(adminGroup)
+
     new aws_iam.Role(this, "AdminRole", {
       roleName: "AdminRole",
-      assumedBy: new aws_iam.ArnPrincipal(adminGroup.groupArn),
+      assumedBy: new aws_iam.ArnPrincipal(user.userArn),
       managedPolicies: [
         aws_iam.ManagedPolicy.fromAwsManagedPolicyName("AdministratorAccess"),
       ],
