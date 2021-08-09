@@ -4629,15 +4629,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.12.4":
-  version: 0.12.4
-  resolution: "esbuild@npm:0.12.4"
-  bin:
-    esbuild: bin/esbuild
-  checksum: 77170f047aa2816d29a0b51acf7c69b58182698425bc8b61b5103a8fbf00720bbd35e18ae9203fae3837f490e3c22b709b8994931f7b79ee6f9c5fcffb131226
-  languageName: node
-  linkType: hard
-
 "escalade@npm:^3.1.1":
   version: 3.1.1
   resolution: "escalade@npm:3.1.1"
@@ -8847,22 +8838,6 @@ fsevents@^2.1.2:
   checksum: ee774aa5957a57474f078fca1e9a41a10aac35e9b1ce9b2e2ecdb832f58fd21b1601075441dca633f582c881cca6c60308bf8505e6ab06305181be241bd47241
   languageName: node
   linkType: hard
-
-"private-cloudfront-amplify@workspace:patterns/private-cloudfront-amplify":
-  version: 0.0.0-use.local
-  resolution: "private-cloudfront-amplify@workspace:patterns/private-cloudfront-amplify"
-  dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.16
-    aws-cdk: 2.0.0-rc.16
-    aws-cdk-lib: 2.0.0-rc.16
-    constructs: 10.0.5
-    esbuild: ^0.12.4
-    esbuild-register: 2.5.0
-    jest: ^26.0.0
-    ts-jest: ^26.0.0
-    typescript: ^4.1.3
-  languageName: unknown
-  linkType: soft
 
 "process-nextick-args@npm:~2.0.0":
   version: 2.0.1

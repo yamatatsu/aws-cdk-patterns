@@ -1,8 +1,0 @@
-{
-  "extends": "../../../tsconfig.json",
-  "compilerOptions": {
-    "target": "es2018",
-    "jsx": "react",
-    "lib": ["dom", "es2015", "es2016", "es2017"]
-  }
-}
