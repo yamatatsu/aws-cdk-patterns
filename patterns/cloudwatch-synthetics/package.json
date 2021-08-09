@@ -13,7 +13,7 @@
     "@aws-cdk/assert": "2.0.0-rc.16",
     "@types/jest": "26.0.23",
     "@types/node": "14.17.9",
-    "@vercel/ncc": "^0.28.3",
+    "@vercel/ncc": "^0.29.0",
     "aws-cdk": "2.0.0-rc.16",
     "aws-cdk-lib": "2.0.0-rc.16",
     "constructs": "10.0.5",

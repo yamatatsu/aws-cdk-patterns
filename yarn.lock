@@ -2599,14 +2599,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/ncc@npm:^0.28.3":
-  version: 0.28.3
-  resolution: "@vercel/ncc@npm:0.28.3"
+"@vercel/ncc@npm:^0.29.0":
+  version: 0.29.0
+  resolution: "@vercel/ncc@npm:0.29.0"
   dependencies:
     node-gyp: latest
   bin:
     ncc: dist/ncc/cli.js
-  checksum: 255a5cc5bcd266efb33dbbdf65177cf8d1297b09460da5d61511a0aa42988bf8c558fc2e31a4498e7cbb5c93b1745ce12ac111d640f300f1498057deb4ecc2e9
+  checksum: a5f2e0b7169f9adc53efc4bf16f81d7b58714e90916c932f521dd813aaa435908fb999b428e7b9a5bbfb76100e781b7ef6da74b9517910c1f7e84346a3aa84af
   languageName: node
   linkType: hard
 
@@ -3733,7 +3733,7 @@ __metadata:
     "@aws-cdk/assert": 2.0.0-rc.16
     "@types/jest": 26.0.23
     "@types/node": 14.17.9
-    "@vercel/ncc": ^0.28.3
+    "@vercel/ncc": ^0.29.0
     aws-cdk: 2.0.0-rc.16
     aws-cdk-lib: 2.0.0-rc.16
     constructs: 10.0.5
