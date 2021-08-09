@@ -187,7 +187,7 @@ Object {
           Object {
             "Essential": true,
             "Image": Object {
-              "Fn::Sub": "XXXXXXXXXXXX.dkr.ecr.ap-northeast-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-XXXXXXXXXXXX-ap-northeast-1:d8f76fff21b962f00f6c3e0578598b2e0652dd75397292a351db89c17e612667",
+              "Fn::Sub": "XXXXXXXXXXXX.dkr.ecr.ap-northeast-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-XXXXXXXXXXXX-ap-northeast-1:0c2d669a76f55d2dd00b1a564169c493a17a228e9d40902a8ca2654c1cd7c33c",
             },
             "LogConfiguration": Object {
               "LogDriver": "awslogs",
