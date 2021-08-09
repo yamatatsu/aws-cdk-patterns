@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@aws-cdk/assert": "2.0.0-rc.16",
-    "@aws-sdk/client-sts": "3.17.0",
+    "@aws-sdk/client-sts": "3.25.0",
     "@types/jest": "26.0.23",
     "@types/node": "14.17.9",
     "aws-cdk": "2.0.0-rc.16",
