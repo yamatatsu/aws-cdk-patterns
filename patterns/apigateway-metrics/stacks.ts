@@ -40,7 +40,7 @@ export class ApigatewayMetrics extends Stack {
       new cloudwatch.Metric({
         namespace: "AWS/ApiGateway",
         metricName,
-        dimensions: {
+        dimensionsMap: {
           ApiName: restApiName,
           Stage: restApi.deploymentStage.stageName,
         },
@@ -51,7 +51,7 @@ export class ApigatewayMetrics extends Stack {
       metric: new cloudwatch.Metric({
         namespace: "AWS/ApiGateway",
         metricName: "5XXError",
-        dimensions: {
+        dimensionsMap: {
           ApiName: restApiName,
           Stage: restApi.deploymentStage.stageName,
         },
