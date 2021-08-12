@@ -3,14 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "scripts": {
-    "test": "jest"
-  },
+  "scripts": {},
   "dependencies": {
-    "@aws-cdk/assert": "2.0.0-rc.16",
+    "@aws-cdk/assert": "2.0.0-rc.17",
     "@types/aws-lambda": "^8.10.75",
-    "aws-cdk": "2.0.0-rc.16",
-    "aws-cdk-lib": "2.0.0-rc.16",
+    "aws-cdk": "2.0.0-rc.17",
+    "aws-cdk-lib": "2.0.0-rc.17",
     "constructs": "10.0.5",
     "esbuild": "^0.12.1",
     "esbuild-register": "2.6.0",
