@@ -5,69 +5,69 @@ __metadata:
   version: 4
   cacheKey: 7
 
-"@aws-cdk/assert@npm:2.0.0-rc.17":
-  version: 2.0.0-rc.17
-  resolution: "@aws-cdk/assert@npm:2.0.0-rc.17"
+"@aws-cdk/assert@npm:2.0.0-rc.18":
+  version: 2.0.0-rc.18
+  resolution: "@aws-cdk/assert@npm:2.0.0-rc.18"
   dependencies:
-    "@aws-cdk/cloudformation-diff": 2.0.0-rc.17
+    "@aws-cdk/cloudformation-diff": 2.0.0-rc.18
   peerDependencies:
-    aws-cdk-lib: ^2.0.0-rc.17
+    aws-cdk-lib: ^2.0.0-rc.18
     constructs: ^10.0.0
     jest: ">=26.6.3"
-  checksum: a76fc575621269c20137c4328920624a2d7ed651c324419c0d9f9c603970a1be59547d8557987055fab2f26e22931aa87c81e0a906e15e8e77c9ec8a32b70c33
+  checksum: d53c0af0e8f8bfb4a807847f9b45fc561d818fd79d90c89d12f1255446a07f0b09c8a74e0ade7982ed98ef044380d80f8128fbbe799cbe0337ba324602ff7fb7
   languageName: node
   linkType: hard
 
-"@aws-cdk/cfnspec@npm:2.0.0-rc.17":
-  version: 2.0.0-rc.17
-  resolution: "@aws-cdk/cfnspec@npm:2.0.0-rc.17"
+"@aws-cdk/cfnspec@npm:2.0.0-rc.18":
+  version: 2.0.0-rc.18
+  resolution: "@aws-cdk/cfnspec@npm:2.0.0-rc.18"
   dependencies:
     md5: ^2.3.0
-  checksum: 96ef68a54fd942468607002a1f2dd1718fbf2deedec3550248d31d6540ecb68db04a8e380d26807bd943b5e2acd4794df77cfbdb74174dbe746bed205717c58f
+  checksum: 02f26f8ed91ec7e2bb58c6bbeff4f93ed9a7cc1a19774f8553caddc4ed8f3cb545cd73e622cb4fa441299732ff982a289dabd54c84f6b6092c095e42fcd9df7d
   languageName: node
   linkType: hard
 
-"@aws-cdk/cloud-assembly-schema@npm:2.0.0-rc.17":
-  version: 2.0.0-rc.17
-  resolution: "@aws-cdk/cloud-assembly-schema@npm:2.0.0-rc.17"
+"@aws-cdk/cloud-assembly-schema@npm:2.0.0-rc.18":
+  version: 2.0.0-rc.18
+  resolution: "@aws-cdk/cloud-assembly-schema@npm:2.0.0-rc.18"
   dependencies:
     jsonschema: ^1.4.0
     semver: ^7.3.5
-  checksum: 90e307ed06cd31b28aceab8bfff324a970b8f28487f75d0c9f517f29204d1b318a810a885694c3f7e4dedb072ba96e26ff5bbf612e86a6095f52172e26e1e499
+  checksum: 2a3f15c2f1d6a75e8aed1cd8e84dc2f81c875a6595394e5243bb51933bd2ac1fbc58a43cba0ab7ee4a7aaa800ebbb0de73f0503bde7c980bf1b06867390f9e76
   languageName: node
   linkType: hard
 
-"@aws-cdk/cloudformation-diff@npm:2.0.0-rc.17":
-  version: 2.0.0-rc.17
-  resolution: "@aws-cdk/cloudformation-diff@npm:2.0.0-rc.17"
+"@aws-cdk/cloudformation-diff@npm:2.0.0-rc.18":
+  version: 2.0.0-rc.18
+  resolution: "@aws-cdk/cloudformation-diff@npm:2.0.0-rc.18"
   dependencies:
-    "@aws-cdk/cfnspec": 2.0.0-rc.17
+    "@aws-cdk/cfnspec": 2.0.0-rc.18
     "@types/node": ^10.17.60
     colors: ^1.4.0
     diff: ^5.0.0
     fast-deep-equal: ^3.1.3
     string-width: ^4.2.2
     table: ^6.7.1
-  checksum: 63affb52a773f614226f40123535d93274a65830768cc1185bf88bb1d6e79c42c36276be59632ae871057ae659792d5bcd0ec833fe79fe631a4d233b0532c6c4
+  checksum: 46fe14b09133c90bf7b1a45e89e3aad39b4e10d6cc69c301a94b582ddcdc534848e81d1c4a89904c7162320c9d49ea154ad868bcfc61864b3a354db356d7d747
   languageName: node
   linkType: hard
 
-"@aws-cdk/cx-api@npm:2.0.0-rc.17":
-  version: 2.0.0-rc.17
-  resolution: "@aws-cdk/cx-api@npm:2.0.0-rc.17"
+"@aws-cdk/cx-api@npm:2.0.0-rc.18":
+  version: 2.0.0-rc.18
+  resolution: "@aws-cdk/cx-api@npm:2.0.0-rc.18"
   dependencies:
-    "@aws-cdk/cloud-assembly-schema": 2.0.0-rc.17
+    "@aws-cdk/cloud-assembly-schema": 2.0.0-rc.18
     semver: ^7.3.5
   peerDependencies:
-    "@aws-cdk/cloud-assembly-schema": 2.0.0-rc.17
-  checksum: 709eb1b898431a410f7638d506d9e0a909fa42e2fd75a66a318c0e4730e2ddf453ac258068b83f2666870035272747e37420dceccf19b06bb114767fc991f813
+    "@aws-cdk/cloud-assembly-schema": 2.0.0-rc.18
+  checksum: 7542d2ceef559937473728a978e1f17b893f5747c6fec74156c73d384723490c44f5e934df408901394afb5972119e773c41dda56b977f508869b85d67f3bbde
   languageName: node
   linkType: hard
 
-"@aws-cdk/region-info@npm:2.0.0-rc.17":
-  version: 2.0.0-rc.17
-  resolution: "@aws-cdk/region-info@npm:2.0.0-rc.17"
-  checksum: 7c08bd4068ed8053824199e75884c6eb828535f31a47c0bb2c6f048d25dbd6e207b5c94423a9a5ef11dbf71ae4fd4efec3f171653b65ccee5ba46695a2e6752a
+"@aws-cdk/region-info@npm:2.0.0-rc.18":
+  version: 2.0.0-rc.18
+  resolution: "@aws-cdk/region-info@npm:2.0.0-rc.18"
+  checksum: 06bee4026ad5b47a71877249e83bbf12c4d5c32b5567ab22e8f5e75515d9c8167e8fff7aa3f9950d12bc4da5f06251d84a5f29db64b38f8ffce9d24a2c8e947f
   languageName: node
   linkType: hard
 
@@ -3081,9 +3081,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "apigateway-cognito@workspace:patterns/apigateway-cognito"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -3096,9 +3096,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "apigateway-metrics@workspace:patterns/apigateway-metrics"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -3111,9 +3111,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "apigateway-versioning@workspace:patterns/apigateway-versioning"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -3290,9 +3290,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-cdk-lib@npm:2.0.0-rc.17":
-  version: 2.0.0-rc.17
-  resolution: "aws-cdk-lib@npm:2.0.0-rc.17"
+"aws-cdk-lib@npm:2.0.0-rc.18":
+  version: 2.0.0-rc.18
+  resolution: "aws-cdk-lib@npm:2.0.0-rc.18"
   dependencies:
     "@balena/dockerignore": ^1.0.2
     case: 1.6.3
@@ -3310,7 +3310,7 @@ __metadata:
     yaml: 1.10.2
   peerDependencies:
     constructs: ^10.0.0
-  checksum: 26c5e9903e0dedcc6bb599b6dd0d02b7036c628b39560f127e1a9e208c80279ae5bf165100527981fd4eb9f606d9da9695d1c1a2dac8fba5f5849d5941390f61
+  checksum: 8d47c7e32b5579aba038a2c529fcf368c8c42c24ce61ecbdbcc04aace661e18a830be0adc163993c7d5368b070073f65391d50d494bf78f5fdfe9d54572d2f29
   languageName: node
   linkType: hard
 
@@ -3324,18 +3324,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"aws-cdk@npm:2.0.0-rc.17":
-  version: 2.0.0-rc.17
-  resolution: "aws-cdk@npm:2.0.0-rc.17"
+"aws-cdk@npm:2.0.0-rc.18":
+  version: 2.0.0-rc.18
+  resolution: "aws-cdk@npm:2.0.0-rc.18"
   dependencies:
-    "@aws-cdk/cloud-assembly-schema": 2.0.0-rc.17
-    "@aws-cdk/cloudformation-diff": 2.0.0-rc.17
-    "@aws-cdk/cx-api": 2.0.0-rc.17
-    "@aws-cdk/region-info": 2.0.0-rc.17
+    "@aws-cdk/cloud-assembly-schema": 2.0.0-rc.18
+    "@aws-cdk/cloudformation-diff": 2.0.0-rc.18
+    "@aws-cdk/cx-api": 2.0.0-rc.18
+    "@aws-cdk/region-info": 2.0.0-rc.18
     archiver: ^5.3.0
     aws-sdk: ^2.848.0
     camelcase: ^6.2.0
-    cdk-assets: 2.0.0-rc.17
+    cdk-assets: 2.0.0-rc.18
     colors: ^1.4.0
     decamelize: ^5.0.0
     fs-extra: ^9.1.0
@@ -3353,7 +3353,7 @@ __metadata:
     yargs: ^16.2.0
   bin:
     cdk: bin/cdk
-  checksum: ac4db30613c50942786de52c1a8f5b1c44e04a4d2ed834a65d312635571774e5cb81a45040f87defe2f34cceb8c67f9092bd6ba41e9206d117e1e2e6593f85d4
+  checksum: 21eba7888c49c90dae8f4e4b458fdb12954790712603e94ec3218671361cd3d64bbd59116a92b5ff0a2e7deb690cb95d5686d546bfa0edaa75569a1bb3f406e9
   languageName: node
   linkType: hard
 
@@ -3757,12 +3757,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cdk-assets@npm:2.0.0-rc.17":
-  version: 2.0.0-rc.17
-  resolution: "cdk-assets@npm:2.0.0-rc.17"
+"cdk-assets@npm:2.0.0-rc.18":
+  version: 2.0.0-rc.18
+  resolution: "cdk-assets@npm:2.0.0-rc.18"
   dependencies:
-    "@aws-cdk/cloud-assembly-schema": 2.0.0-rc.17
-    "@aws-cdk/cx-api": 2.0.0-rc.17
+    "@aws-cdk/cloud-assembly-schema": 2.0.0-rc.18
+    "@aws-cdk/cx-api": 2.0.0-rc.18
     archiver: ^5.3.0
     aws-sdk: ^2.848.0
     glob: ^7.1.7
@@ -3771,7 +3771,7 @@ __metadata:
   bin:
     cdk-assets: bin/cdk-assets
     docker-credential-cdk-assets: bin/docker-credential-cdk-assets
-  checksum: 0678d2453551d6ee7f1daba885f406dcd75a8f2028585bb7f42237766bd982b57e4c4f5ccf2c0ba5822a9dcf3f0c08e7172066d5b97dc9987b85dcd94eb14eca
+  checksum: c0dff9302cedc5682605507257bab05a976145371e6184b58c96daa9c7d808a35bfd6417e143de69854a915b329b317bfc20508c456214f9cdffeb10bb39f0a9
   languageName: node
   linkType: hard
 
@@ -3917,12 +3917,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "cloudwatch-synthetics@workspace:patterns/cloudwatch-synthetics"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
     "@types/jest": ^27.0.0
     "@types/node": 14.17.11
     "@vercel/ncc": 0.29.x
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -4631,11 +4631,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ec2-auto-scaling@workspace:patterns/ec2-auto-scaling"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
     "@types/jest": ^27.0.0
     "@types/node": 14.17.11
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -4992,12 +4992,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "fargate-alb@workspace:patterns/fargate-alb"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
     "@aws-sdk/client-sts": 3.27.0
     "@types/jest": ^27.0.0
     "@types/node": 14.17.11
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -5716,9 +5716,9 @@ fsevents@^2.3.2:
   version: 0.0.0-use.local
   resolution: "iam-mania-solo@workspace:patterns/iam-mania-solo"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -5731,9 +5731,9 @@ fsevents@^2.3.2:
   version: 0.0.0-use.local
   resolution: "iam-mania-template@workspace:patterns/iam-mania-template"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -5746,9 +5746,9 @@ fsevents@^2.3.2:
   version: 0.0.0-use.local
   resolution: "iam-mania-tutorial@workspace:patterns/iam-mania-tutorial"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -6997,10 +6997,10 @@ fsevents@^2.3.2:
   version: 0.0.0-use.local
   resolution: "lambda-insights@workspace:patterns/lambda-insights"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
     "@types/aws-lambda": ^8.10.75
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild: ^0.12.1
     esbuild-register: 3.0.0
@@ -7644,9 +7644,9 @@ fsevents@^2.3.2:
   version: 0.0.0-use.local
   resolution: "monitoring-lambda-memory@workspace:patterns/monitoring-lambda-memory"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
@@ -9301,9 +9301,9 @@ fsevents@^2.3.2:
   version: 0.0.0-use.local
   resolution: "security@workspace:patterns/security"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     dotenv: ^10.0.0
     esbuild-register: 3.0.0
@@ -10520,9 +10520,9 @@ typescript@^4.1.3:
   version: 0.0.0-use.local
   resolution: "wafv2@workspace:patterns/wafv2"
   dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
+    "@aws-cdk/assert": 2.0.0-rc.18
+    aws-cdk: 2.0.0-rc.18
+    aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild-register: 3.0.0
     jest: ^27.0.0
