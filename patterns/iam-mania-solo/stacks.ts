@@ -4,10 +4,27 @@ export class IamManiaSolo extends Stack {
   constructor(parent: App, id: string, props?: StackProps) {
     super(parent, id, props)
 
+    const forceMfaPolicy = new aws_iam.ManagedPolicy(this, "ForceMfaPolicy", {
+      managedPolicyName: "ForceMfaPolicy",
+      statements: [
+        new aws_iam.PolicyStatement({
+          effect: aws_iam.Effect.DENY,
+          notActions: ["iam:*"],
+          resources: ["*"],
+          conditions: {
+            BoolIfExists: {
+              "aws:MultiFactorAuthPresent": "false",
+            },
+          },
+        }),
+      ],
+    })
+
     const adminGroup = new aws_iam.Group(this, "AdminGroup", {
       groupName: "AdminGroup",
       managedPolicies: [
         aws_iam.ManagedPolicy.fromAwsManagedPolicyName("ReadOnlyAccess"),
+        forceMfaPolicy,
       ],
     })
 

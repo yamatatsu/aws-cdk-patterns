@@ -19,6 +19,9 @@ Object {
               ],
             ],
           },
+          Object {
+            "Ref": "ForceMfaPolicyD91A0C36",
+          },
         ],
       },
       "Type": "AWS::IAM::Group",
@@ -69,6 +72,29 @@ Object {
         "RoleName": "AdminRole",
       },
       "Type": "AWS::IAM::Role",
+    },
+    "ForceMfaPolicyD91A0C36": Object {
+      "Properties": Object {
+        "Description": "",
+        "ManagedPolicyName": "ForceMfaPolicy",
+        "Path": "/",
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Condition": Object {
+                "BoolIfExists": Object {
+                  "aws:MultiFactorAuthPresent": "false",
+                },
+              },
+              "Effect": "Deny",
+              "NotAction": "iam:*",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::ManagedPolicy",
     },
     "dummyGroup0": Object {
       "Properties": Object {
