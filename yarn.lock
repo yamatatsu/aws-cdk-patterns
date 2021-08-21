@@ -2801,10 +2801,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.17.9":
-  version: 14.17.9
-  resolution: "@types/node@npm:14.17.9"
-  checksum: b1d145b37dd4b060ed8887975b1452ba6d47bb06c1c4a53ff75d21df2e34a94bba98678d700e736bcb5f9bb418915fe75640851da72c874639f0b0ba7bf6cf1f
+"@types/node@npm:14.17.11":
+  version: 14.17.11
+  resolution: "@types/node@npm:14.17.11"
+  checksum: c52c533d83602e232ec283c7527eaaf0c60e7b899bbced65799fbf76cf0a393ff7c22feb64c66d9f52e3a505e850a8d37cd64d790e295cbe8b0dacfdd504edc3
   languageName: node
   linkType: hard
 
@@ -3917,7 +3917,7 @@ __metadata:
   dependencies:
     "@aws-cdk/assert": 2.0.0-rc.17
     "@types/jest": ^27.0.0
-    "@types/node": 14.17.9
+    "@types/node": 14.17.11
     "@vercel/ncc": 0.29.x
     aws-cdk: 2.0.0-rc.17
     aws-cdk-lib: 2.0.0-rc.17
@@ -4631,7 +4631,7 @@ __metadata:
   dependencies:
     "@aws-cdk/assert": 2.0.0-rc.17
     "@types/jest": ^27.0.0
-    "@types/node": 14.17.9
+    "@types/node": 14.17.11
     aws-cdk: 2.0.0-rc.17
     aws-cdk-lib: 2.0.0-rc.17
     constructs: 10.0.5
@@ -5001,7 +5001,7 @@ __metadata:
     "@aws-cdk/assert": 2.0.0-rc.17
     "@aws-sdk/client-sts": 3.25.0
     "@types/jest": ^27.0.0
-    "@types/node": 14.17.9
+    "@types/node": 14.17.11
     aws-cdk: 2.0.0-rc.17
     aws-cdk-lib: 2.0.0-rc.17
     constructs: 10.0.5
@@ -5930,21 +5930,6 @@ fsevents@^2.3.2:
   checksum: f15725d76206525546f559030ddc967db025c6db904eb8798a70ec3c07e42c5537c5cbc73a15eafd4ae5cdabad35601abf8878261c03dcc8217747e8037575fe
   languageName: node
   linkType: hard
-
-"iot@workspace:patterns/iot":
-  version: 0.0.0-use.local
-  resolution: "iot@workspace:patterns/iot"
-  dependencies:
-    "@aws-cdk/assert": 2.0.0-rc.17
-    aws-cdk: 2.0.0-rc.17
-    aws-cdk-lib: 2.0.0-rc.17
-    constructs: 10.0.5
-    esbuild-register: 2.6.0
-    jest: ^27.0.0
-    ts-jest: ^27.0.0
-    typescript: ^4.1.3
-  languageName: unknown
-  linkType: soft
 
 "ip@npm:^1.1.5":
   version: 1.1.5
