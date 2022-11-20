@@ -3085,7 +3085,7 @@ __metadata:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -3100,7 +3100,7 @@ __metadata:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -3115,7 +3115,7 @@ __metadata:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -3924,7 +3924,7 @@ __metadata:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     puppeteer: ^10.0.0
     puppeteer-core: ^10.0.0
@@ -4377,6 +4377,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"debug@npm:^4.3.4":
+  version: 4.3.4
+  resolution: "debug@npm:4.3.4"
+  dependencies:
+    ms: 2.1.2
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 7d71c93be25ed05e85840ec12df1a6d1848adbf8bc66948017ad4120fed17d7889e305adec560c18d70710e6de0c55548fbed170f4355045bbbbbd2afd1532a2
+  languageName: node
+  linkType: hard
+
 "debuglog@npm:^1.0.1":
   version: 1.0.1
   resolution: "debuglog@npm:1.0.1"
@@ -4637,7 +4649,7 @@ __metadata:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -4770,14 +4782,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild-register@npm:3.0.0":
-  version: 3.0.0
-  resolution: "esbuild-register@npm:3.0.0"
+"esbuild-register@npm:3.4.1":
+  version: 3.4.1
+  resolution: "esbuild-register@npm:3.4.1"
   dependencies:
-    jsonc-parser: ^3.0.0
+    debug: ^4.3.4
   peerDependencies:
     esbuild: ">=0.12 <1"
-  checksum: 9d60f690f9b1ed6b08fdca1d9d40ac464d9580bfec439be9cc5df8a5cab565e0ded8671c07726f35fea0299f94d69ea3e1cd6b46f762c6783b93c1a58fae7503
+  checksum: c5add0740f213bd1a6197f7ddb9f7d5d1f3a4c296fe886797ac7635c69b34d53c049b6eed347d70da5f4dd9fa25fd3f96c5919bf9ad114b79908c42005352763
   languageName: node
   linkType: hard
 
@@ -4999,7 +5011,7 @@ __metadata:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -5720,7 +5732,7 @@ fsevents@^2.3.2:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -5735,7 +5747,7 @@ fsevents@^2.3.2:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -5750,7 +5762,7 @@ fsevents@^2.3.2:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -6921,13 +6933,6 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"jsonc-parser@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "jsonc-parser@npm:3.0.0"
-  checksum: 36b9080a7e25f5052c7d551109c4ead564f3102d7ca0c5ee4a2f7debc18b2cd31896e0e369cfd1442d9d2d71fc1defaf094ba885bc9b43a6a3f2b3a9083fd2cb
-  languageName: node
-  linkType: hard
-
 "jsonfile@npm:^4.0.0":
   version: 4.0.0
   resolution: "jsonfile@npm:4.0.0"
@@ -7003,7 +7008,7 @@ fsevents@^2.3.2:
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     esbuild: ^0.12.1
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -7648,7 +7653,7 @@ fsevents@^2.3.2:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -9306,7 +9311,7 @@ fsevents@^2.3.2:
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
     dotenv: ^10.0.0
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
@@ -10524,7 +10529,7 @@ typescript@^4.1.3:
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
-    esbuild-register: 3.0.0
+    esbuild-register: 3.4.1
     jest: ^27.0.0
     ts-jest: ^27.0.0
     typescript: ^4.1.3
