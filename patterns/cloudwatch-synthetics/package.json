@@ -16,7 +16,7 @@
     "@vercel/ncc": "0.29.x",
     "aws-cdk": "2.0.0-rc.18",
     "aws-cdk-lib": "2.0.0-rc.18",
-    "constructs": "10.0.5",
+    "constructs": "10.1.165",
     "esbuild-register": "3.0.0",
     "jest": "^27.0.0",
     "puppeteer": "^10.0.0",
