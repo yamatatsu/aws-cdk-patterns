@@ -2803,10 +2803,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.17.11":
-  version: 14.17.11
-  resolution: "@types/node@npm:14.17.11"
-  checksum: c52c533d83602e232ec283c7527eaaf0c60e7b899bbced65799fbf76cf0a393ff7c22feb64c66d9f52e3a505e850a8d37cd64d790e295cbe8b0dacfdd504edc3
+"@types/node@npm:14.18.33":
+  version: 14.18.33
+  resolution: "@types/node@npm:14.18.33"
+  checksum: 259460f3195dd494ae443255422d97f01fab00dc020258f028b247db3ad93b76bf31f2f7ddbe36d43c5389a77da4645e1830e992d8d60b6301aad8a43c0495ab
   languageName: node
   linkType: hard
 
@@ -3919,7 +3919,7 @@ __metadata:
   dependencies:
     "@aws-cdk/assert": 2.0.0-rc.18
     "@types/jest": ^27.0.0
-    "@types/node": 14.17.11
+    "@types/node": 14.18.33
     "@vercel/ncc": 0.29.x
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
@@ -4633,7 +4633,7 @@ __metadata:
   dependencies:
     "@aws-cdk/assert": 2.0.0-rc.18
     "@types/jest": ^27.0.0
-    "@types/node": 14.17.11
+    "@types/node": 14.18.33
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
@@ -4995,7 +4995,7 @@ __metadata:
     "@aws-cdk/assert": 2.0.0-rc.18
     "@aws-sdk/client-sts": 3.27.0
     "@types/jest": ^27.0.0
-    "@types/node": 14.17.11
+    "@types/node": 14.18.33
     aws-cdk: 2.0.0-rc.18
     aws-cdk-lib: 2.0.0-rc.18
     constructs: 10.0.5
